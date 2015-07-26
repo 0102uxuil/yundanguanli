@@ -12,6 +12,9 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 public abstract class TextFieldWithComboBox extends JTextField {
 	
@@ -32,6 +35,7 @@ public abstract class TextFieldWithComboBox extends JTextField {
 	public void init(){
 //		TextFieldWithComboBox(DefaultComboBoxModel<String> model){
 			this.relatedTF = null;
+			this.setDocument(new ExceptSpaceDocument());
 			this.setColumns(10);
 			this.setLayout(new BorderLayout());
 			this.comboBox = new JComboBox(){
@@ -210,5 +214,21 @@ public abstract class TextFieldWithComboBox extends JTextField {
             }
             setAdjusting(this.comboBox, false);
 		}
+	}
+	
+	public class ExceptSpaceDocument extends PlainDocument{
+
+		@Override
+		public void insertString(int offs, String str, AttributeSet a)
+				throws BadLocationException {
+			// TODO Auto-generated method stub
+			for(int i=0;i<str.length();i++){  
+	            if(str.charAt(i) == ' '){   
+	                return;   
+	            }
+	        }
+			super.insertString(offs, str, a);
+		}
+		
 	}
 }
