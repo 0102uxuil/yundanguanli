@@ -165,6 +165,9 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 			}
 			sql_kaixiaodan = sql_kaixiaodan + "," + "gonglishu=" + Float.parseFloat(this.yundan.gonglishu.getText().trim());
 		}
+		if(this.yundan.yifugongzi.getText() ==null || this.yundan.yifugongzi.getText().trim().equals("")){
+			throw new FormatException("已付工资不能为空！");
+		}
 		if(!this.yundan.yifugongzi.getText().trim().equals("")){
 			if(!this.yundan.yifugongzi.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 				throw new FormatException("已付工资必须是正数！");
@@ -208,6 +211,9 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 			}
 			sql_kaixiaodan = sql_kaixiaodan + "," + "yuetongka=" + Float.parseFloat(this.yundan.yuetongka.getText().trim());
 			zongkaixiao += Float.parseFloat(this.yundan.yuetongka.getText().trim());
+		}
+		if(this.yundan.gongzi.getText() ==null || this.yundan.gongzi.getText().trim().equals("")){
+			throw new FormatException("工资不能为空！");
 		}
 		if(!this.yundan.gongzi.getText().trim().equals("")){
 			if(!this.yundan.gongzi.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
