@@ -100,9 +100,27 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			yijiezhangjine = chucheyijiezhangjine + huicheyijiezhangjine;
 			weijiezhangjine = chucheweijiezhangjine + huicheweijiezhangjine;
 			//重算总开销
+			float youhao = 0;
+			String yundanbianhao_next = YunDanBianHao.next(rs.getString("yundanbianhao"));
+			if(yundanbianhao_next != null){
+				String sql_yn = "select jiayouzhanjiayou, tingchechangjiayou, tingchechangyoujia from kaixiaodan where "
+						+ "yundanbianhao = "
+						+ "'" + yundanbianhao_next + "'"
+						+ ";";
+				ResultSet rs_yn = DBManager.getInstance().excuteQuery(sql_yn);
+				if(rs_yn.next()){
+					if(rs_yn.getString("jiayouzhanjiayou") != null && !rs_yn.getString("jiayouzhanjiayou").equals("")){
+						youhao += rs_yn.getFloat("jiayouzhanjiayou");
+					}
+					if(rs_yn.getString("tingchechangjiayou") != null && !rs_yn.getString("tingchechangjiayou").equals("")){
+						youhao += rs_yn.getFloat("tingchechangjiayou")*rs_yn.getFloat("tingchechangyoujia");
+					}
+				}
+			}
 			float zongkaixiao;
 			zongkaixiao = rs.getFloat("zongkaixiao");
-			zongkaixiao += rs.getFloat("youhao");
+//			zongkaixiao += rs.getFloat("youhao");
+			zongkaixiao += youhao;
 			if(rs.getString("jiayouzhanjiayou") != null && !rs.getString("jiayouzhanjiayou").equals("")){
 				zongkaixiao -= rs.getFloat("jiayouzhanjiayou");
 			}

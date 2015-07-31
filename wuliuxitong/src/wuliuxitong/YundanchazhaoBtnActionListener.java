@@ -94,7 +94,25 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 			zongkaixiao = rs.getFloat("zongkaixiao");
 			//zongkaixiao包括出车时的加油开销
 			//由于每次 出车前都加满油，所以出车时的加油量是上一趟的油耗，所以需要减去出车前的加油开销，加上下一趟出车前的加油开销
-			zongkaixiao += rs.getFloat("youhao");
+			float youhao = 0;
+			String yundanbianhao_next = YunDanBianHao.next(rs.getString("yundanbianhao"));
+			if(yundanbianhao_next != null){
+				String sql_yn = "select jiayouzhanjiayou, tingchechangjiayou, tingchechangyoujia from kaixiaodan where "
+						+ "yundanbianhao = "
+						+ "'" + yundanbianhao_next + "'"
+						+ ";";
+				ResultSet rs_yn = DBManager.getInstance().excuteQuery(sql_yn);
+				if(rs_yn.next()){
+					if(rs_yn.getString("jiayouzhanjiayou") != null && !rs_yn.getString("jiayouzhanjiayou").equals("")){
+						youhao += rs_yn.getFloat("jiayouzhanjiayou");
+					}
+					if(rs_yn.getString("tingchechangjiayou") != null && !rs_yn.getString("tingchechangjiayou").equals("")){
+						youhao += rs_yn.getFloat("tingchechangjiayou")*rs_yn.getFloat("tingchechangyoujia");
+					}
+				}
+			}
+//			zongkaixiao += rs.getFloat("youhao");
+			zongkaixiao += youhao;
 			if(rs.getString("jiayouzhanjiayou") != null && !rs.getString("jiayouzhanjiayou").equals("")){
 				zongkaixiao -= rs.getFloat("jiayouzhanjiayou");
 			}
@@ -166,8 +184,26 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 			
 			//油耗start
 			rec_vector.addElement((float)(Math.round(rs.getFloat("gonglishu")*100))/100);
-			rec_vector.addElement((float)(Math.round(rs.getFloat("youhao")*100))/100);
-			rec_vector.addElement((float)(Math.round(rs.getFloat("youhao")/rs.getFloat("gonglishu")*100))/100);
+//			rec_vector.addElement((float)(Math.round(rs.getFloat("youhao")*100))/100);
+//			rec_vector.addElement((float)(Math.round(rs.getFloat("youhao")/rs.getFloat("gonglishu")*100))/100);
+			
+//			float youhao = 0;
+//			String yundanbianhao_next = YunDanBianHao.next(rs.getString("yundanbianhao"));
+//			String sql_yn = "select jiayouzhanjiayou, tingchechangjiayou, tingchechangyoujia from kaixiaodan where "
+//					+ "yundanbianhao = "
+//					+ "'" + yundanbianhao_next + "'"
+//					+ ";";
+//			ResultSet rs_yn = DBManager.getInstance().excuteQuery(sql_yn);
+//			if(rs_yn.next()){
+//				if(rs_yn.getString("jiayouzhanjiayou") != null && !rs_yn.getString("jiayouzhanjiayou").equals("")){
+//					youhao += rs_yn.getFloat("jiayouzhanjiayou");
+//				}
+//				if(rs_yn.getString("tingchechangjiayou") != null && !rs_yn.getString("tingchechangjiayou").equals("")){
+//					youhao += rs_yn.getFloat("tingchechangjiayou")*rs_yn.getFloat("tingchechangyoujia");
+//				}
+//			}
+			rec_vector.addElement((float)(Math.round(youhao*100))/100);
+			rec_vector.addElement((float)(Math.round(youhao/rs.getFloat("gonglishu")*100))/100);
 			//油耗end
 			
 			vector.addElement(rec_vector);//向量rec_vector加入向量vect中 
