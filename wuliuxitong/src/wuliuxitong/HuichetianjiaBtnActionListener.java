@@ -97,6 +97,16 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 //			if(!(this.yundan.huicheshifujine.getText().trim().equals("") || this.yundan.huicheshifujine.getText().trim() == null)){
 //				this.yundan.huicheshifuzonge += Float.parseFloat(this.yundan.huicheshifujine.getText().trim());
 //			}
+			
+			float huicheshouxufei;
+			if(this.yundan.huicheshouxufei.getText().trim().equals("") || this.yundan.huicheshouxufei.getText().trim() == null){
+				huicheshouxufei = 0;
+			} else {
+				huicheshouxufei = Float.parseFloat(this.yundan.huicheshouxufei.getText().trim());
+			}
+			rec_vector.addElement(huicheshouxufei);
+			jine = jine - huicheshouxufei;
+			
 			rec_vector.addElement(jine);
 			rec_vector.addElement(this.yundan.huicheshifujine.getText().trim());
 			rec_vector.addElement(this.yundan.huichejiezhangbeizhu.getText().trim());

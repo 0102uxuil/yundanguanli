@@ -66,6 +66,8 @@ public class YunDan extends JFrame {
 	JTextField chucheshifujine, huicheshifujine;
 	JTextField chuchejiezhangbeizhu, huichejiezhangbeizhu;
 	
+	JTextField chucheshouxufei, huicheshouxufei;
+	
 	float chucheyingfuzonge, chucheshifuzonge, huicheyingfuzonge, huicheshifuzonge;
 	
 	JComboBox chucheshifouqingsuan, huicheshifouqingsuan;
@@ -282,9 +284,13 @@ public class YunDan extends JFrame {
         this.chucheqitafeiyong = new JTextField(10);
         this.makeLabelAndTextField(this, "其他费用（元）：", this.chucheqitafeiyong, gridbag, c, 2);
         this.chuchebeizhu = new JTextField(10);
-        this.makeLabelAndTextField(this, "　　　　　备注：", this.chuchebeizhu, gridbag, c, 3);
+        this.makeLabelAndTextField(this, "　　　　　备注：", this.chuchebeizhu, gridbag, c, 2);
 //        this.chucheyingfujine = new JTextField(10);
 //        this.makeLabelAndTextField(this, "应付金额：", this.chucheyingfujine, gridbag, c, 2);
+        
+        this.chucheshouxufei = new JTextField(10);
+        this.makeLabelAndTextField(this, "　　　　手续费：", this.chucheshouxufei, gridbag, c, 2);
+        
         this.chucheshifujine = new JTextField(10);
         this.makeLabelAndTextField(this, "实付金额（元）：", this.chucheshifujine, gridbag, c, 2);
         this.chuchejiezhangbeizhu = new JTextField(10);
@@ -327,6 +333,7 @@ public class YunDan extends JFrame {
 				"货主",
 				"其他费用",
 				"备注",
+				"手续费",
 				"应付金额",
 				"实付金额",
 				"结账备注",
@@ -444,9 +451,13 @@ public class YunDan extends JFrame {
         this.huicheqitafeiyong = new JTextField(10);
         this.makeLabelAndTextField(this, "其他费用（元）：", this.huicheqitafeiyong, gridbag, c, 2);
         this.huichebeizhu = new JTextField(10);
-        this.makeLabelAndTextField(this, "　　　　　备注：", this.huichebeizhu, gridbag, c, 3);
+        this.makeLabelAndTextField(this, "　　　　　备注：", this.huichebeizhu, gridbag, c, 2);
 //        this.huicheyingfujine = new JTextField(10);
 //        this.makeLabelAndTextField(this, "应付金额：", this.huicheyingfujine, gridbag, c, 2);
+        
+        this.huicheshouxufei = new JTextField(10);
+        this.makeLabelAndTextField(this, "　　　　手续费：", this.huicheshouxufei, gridbag, c, 2);
+        
         this.huicheshifujine = new JTextField(10);
         this.makeLabelAndTextField(this, "实付金额（元）：", this.huicheshifujine, gridbag, c, 2);
         this.huichejiezhangbeizhu = new JTextField(10);
@@ -766,7 +777,7 @@ public class YunDan extends JFrame {
 			this.beizhu.setText(rs.getString("beizhu"));
 			
 			String sql_chuchehuodan;
-			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shifujine, jiezhangbeizhu"
+			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 					+ " and huowubianhao like '0%' " + ";";
@@ -788,13 +799,14 @@ public class YunDan extends JFrame {
 				this.chuchehuozhu.setText(rsc.getString("huozhu"));
 				this.chucheqitafeiyong.setText(rsc.getString("qitafeiyong"));
 				this.chuchebeizhu.setText(rsc.getString("beizhu"));
+				this.chucheshouxufei.setText(rsc.getString("shouxufei"));
 				this.chucheshifujine.setText(rsc.getString("shifujine"));
 				this.chuchejiezhangbeizhu.setText(rsc.getString("jiezhangbeizhu"));
 				this.chuchetianjiaBtn.doClick();
 			}
 			
 			String sql_huichehuodan;
-			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shifujine, jiezhangbeizhu"
+			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 //					+ " and biaoji = '0' " + ";";
@@ -817,6 +829,7 @@ public class YunDan extends JFrame {
 				this.huichehuozhu.setText(rsh.getString("huozhu"));
 				this.huicheqitafeiyong.setText(rsh.getString("qitafeiyong"));
 				this.huichebeizhu.setText(rsh.getString("beizhu"));
+				this.huicheshouxufei.setText(rsh.getString("shouxufei"));
 				this.huicheshifujine.setText(rsh.getString("shifujine"));
 				this.huichejiezhangbeizhu.setText(rsh.getString("jiezhangbeizhu"));
 				this.huichetianjiaBtn.doClick();

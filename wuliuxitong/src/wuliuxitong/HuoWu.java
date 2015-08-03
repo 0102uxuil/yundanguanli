@@ -23,7 +23,7 @@ public class HuoWu extends JFrame {
 	
 	JTextField huowubianhao,
 			   huoming, zhongliang, zhongliang2, jiage, baodijia, 
-			   qitafeiyong, beizhu, 
+			   qitafeiyong, beizhu, shouxufei,
 			   huozhu, shifujine, jiezhangbeizhu;
 	JComboBox shifouqingsuan;
 	JButton quedingBtn, quxiaoBtn;
@@ -138,12 +138,13 @@ public class HuoWu extends JFrame {
 		this.huozhu.setText(tm.getValueAt(selectedRow, 6).toString());
 		this.qitafeiyong.setText(tm.getValueAt(selectedRow, 7).toString());
 		this.beizhu.setText(tm.getValueAt(selectedRow, 8).toString());
-		this.shifujine.setText(tm.getValueAt(selectedRow, 10).toString());
-		this.jiezhangbeizhu.setText(tm.getValueAt(selectedRow, 11).toString());
-		if(tm.getValueAt(selectedRow, 12).toString().equals("ÊÇ")){
+		this.shouxufei.setText(tm.getValueAt(selectedRow, 9).toString());
+		this.shifujine.setText(tm.getValueAt(selectedRow, 11).toString());
+		this.jiezhangbeizhu.setText(tm.getValueAt(selectedRow, 12).toString());
+		if(tm.getValueAt(selectedRow, 13).toString().equals("ÊÇ")){
 			this.shifouqingsuan.setSelectedItem("ÊÇ");
 		}
-		if(tm.getValueAt(selectedRow, 12).toString().equals("·ñ")){
+		if(tm.getValueAt(selectedRow, 13).toString().equals("·ñ")){
 			this.shifouqingsuan.setSelectedItem("·ñ");
 		}
 		

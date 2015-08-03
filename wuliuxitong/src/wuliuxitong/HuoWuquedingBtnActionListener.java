@@ -39,6 +39,8 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(this.huowu, "保底价必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.huowu.qitafeiyong.getText().trim().equals("") && this.huowu.qitafeiyong.getText().trim() != null && !this.huowu.qitafeiyong.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(this.huowu, "其他费用必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(!this.huowu.shouxufei.getText().trim().equals("") && this.huowu.shouxufei.getText().trim() != null && !this.huowu.shouxufei.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+			JOptionPane.showMessageDialog(this.huowu, "手续费必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.huowu.shifujine.getText().trim().equals("") && this.huowu.shifujine.getText().trim() != null && !this.huowu.shifujine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(this.huowu, "实付金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else {
@@ -50,6 +52,7 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			this.huowu.tm.setValueAt(this.huowu.huozhu.getText().trim(), this.huowu.selectedRow, 6);
 			this.huowu.tm.setValueAt(this.huowu.qitafeiyong.getText().trim(), this.huowu.selectedRow, 7);
 			this.huowu.tm.setValueAt(this.huowu.beizhu.getText().trim(), this.huowu.selectedRow, 8);
+			this.huowu.tm.setValueAt(this.huowu.shouxufei.getText().trim(), this.huowu.selectedRow, 9);
 			float yingfujine;
 			if(this.huowu.baodijia.getText().trim().equals("") || this.huowu.baodijia.getText().trim() == null){
 				yingfujine = Float.parseFloat(this.huowu.zhongliang.getText().trim())*Float.parseFloat(this.huowu.jiage.getText().trim());
@@ -65,10 +68,10 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			}
 			yingfujine = yingfujine + qitafeiyong;
 			
-			this.huowu.tm.setValueAt(yingfujine, this.huowu.selectedRow, 9);
-			this.huowu.tm.setValueAt(this.huowu.shifujine.getText().trim(), this.huowu.selectedRow, 10);
-			this.huowu.tm.setValueAt(this.huowu.jiezhangbeizhu.getText().trim(), this.huowu.selectedRow, 11);
-			this.huowu.tm.setValueAt(this.huowu.shifouqingsuan.getSelectedItem().toString(), this.huowu.selectedRow, 12);
+			this.huowu.tm.setValueAt(yingfujine, this.huowu.selectedRow, 10);
+			this.huowu.tm.setValueAt(this.huowu.shifujine.getText().trim(), this.huowu.selectedRow, 11);
+			this.huowu.tm.setValueAt(this.huowu.jiezhangbeizhu.getText().trim(), this.huowu.selectedRow, 12);
+			this.huowu.tm.setValueAt(this.huowu.shifouqingsuan.getSelectedItem().toString(), this.huowu.selectedRow, 13);
 			
 			this.huowu.dispose();
 			this.huowu.tm.fireTableDataChanged();

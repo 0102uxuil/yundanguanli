@@ -451,22 +451,28 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(8) == null)){
 					sql_huowudan = sql_huowudan + "," + "beizhu=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(8) + "'";
 				}
+				
 				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9).equals("") 
 						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) == null)){
-//					sql_huowudan = sql_huowudan + "," + "yingfujine=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) + "'";
-					sql_huowudan = sql_huowudan + "," + "yingfujine=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9).toString());
+					sql_huowudan = sql_huowudan + "," + "shouxufei=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) + "'";
 				}
+				
 				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10).equals("") 
 						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10) == null)){
-//					sql_huowudan = sql_huowudan + "," + "shifujine=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10) + "'";
-					sql_huowudan = sql_huowudan + "," + "shifujine=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10).toString());
-//					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
+//					sql_huowudan = sql_huowudan + "," + "yingfujine=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) + "'";
+					sql_huowudan = sql_huowudan + "," + "yingfujine=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10).toString());
 				}
 				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11).equals("") 
 						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11) == null)){
-					sql_huowudan = sql_huowudan + "," + "jiezhangbeizhu=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11).toString() + "'";
+//					sql_huowudan = sql_huowudan + "," + "shifujine=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10) + "'";
+					sql_huowudan = sql_huowudan + "," + "shifujine=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11).toString());
+//					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
 				}
-				if(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12).equals("是")){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12).equals("") 
+						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12) == null)){
+					sql_huowudan = sql_huowudan + "," + "jiezhangbeizhu=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12).toString() + "'";
+				}
+				if(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(13).equals("是")){
 					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
 				}
 				sql_huowudan = sql_huowudan + ";";
@@ -524,22 +530,28 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 //					sql_huowudan = sql_huowudan + "," + "beizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8) + "'";
 					sql_huowudan = sql_huowudan + "," + "beizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8).toString() + "'";
 				}
+				
 				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9).equals("") 
 						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9) == null)){
-//					sql_huowudan = sql_huowudan + "," + "yingfujine=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9) + "'";
-					sql_huowudan = sql_huowudan + "," + "yingfujine=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9).toString());
+					sql_huowudan = sql_huowudan + "," + "shouxufei=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9).toString() + "'";
 				}
+				
 				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10).equals("") 
 						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10) == null)){
-//					sql_huowudan = sql_huowudan + "," + "shifujine=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10) + "'";
-					sql_huowudan = sql_huowudan + "," + "shifujine=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10).toString());
-//					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
+//					sql_huowudan = sql_huowudan + "," + "yingfujine=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9) + "'";
+					sql_huowudan = sql_huowudan + "," + "yingfujine=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10).toString());
 				}
 				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).equals("") 
 						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11) == null)){
-					sql_huowudan = sql_huowudan + "," + "jiezhangbeizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).toString() + "'";
+//					sql_huowudan = sql_huowudan + "," + "shifujine=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10) + "'";
+					sql_huowudan = sql_huowudan + "," + "shifujine=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).toString());
+//					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
 				}
-				if(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12).equals("是")){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).equals("") 
+						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12) == null)){
+					sql_huowudan = sql_huowudan + "," + "jiezhangbeizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12).toString() + "'";
+				}
+				if(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(13).equals("是")){
 					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
 				}
 				

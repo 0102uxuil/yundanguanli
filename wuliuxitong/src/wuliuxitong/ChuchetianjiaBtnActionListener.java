@@ -58,6 +58,8 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "保底价必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.chucheqitafeiyong.getText().trim().equals("") && this.yundan.chucheqitafeiyong.getText().trim() != null && !this.yundan.chucheqitafeiyong.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "其他费用必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(!this.yundan.chucheshouxufei.getText().trim().equals("") && this.yundan.chucheshouxufei.getText().trim() != null && !this.yundan.chucheshouxufei.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+			JOptionPane.showMessageDialog(null, "出车手续费必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.chucheshifujine.getText().trim().equals("") && this.yundan.chucheshifujine.getText().trim() != null && !this.yundan.chucheshifujine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "实付金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else {
@@ -99,6 +101,17 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 //			if(!(this.yundan.chucheshifujine.getText().trim().equals("") || this.yundan.chucheshifujine.getText().trim() == null)){
 //				this.yundan.chucheshifuzonge += Float.parseFloat(this.yundan.chucheshifujine.getText().trim());
 //			}
+			
+			float chucheshouxufei;
+			if(this.yundan.chucheshouxufei.getText().trim().equals("") || this.yundan.chucheshouxufei.getText().trim() == null){
+				chucheshouxufei = 0;
+			} else {
+				chucheshouxufei = Float.parseFloat(this.yundan.chucheshouxufei.getText().trim());
+			}
+			rec_vector.addElement(chucheshouxufei);
+			jine = jine - chucheshouxufei;
+			
+			
 			rec_vector.addElement(jine);
 			rec_vector.addElement(this.yundan.chucheshifujine.getText().trim());
 			rec_vector.addElement(this.yundan.chuchejiezhangbeizhu.getText().trim());
