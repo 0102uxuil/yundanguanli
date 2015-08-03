@@ -5,6 +5,9 @@ import java.sql.SQLException;
 
 public class YunDanBianHao {
 	public static String previous(String yundanbianhao){
+		if(yundanbianhao.length() <= 10){
+			return null;
+		}
 		String year, month, day, chepaihao, tangshu;
 		year = yundanbianhao.substring(0, 4);
 		month = yundanbianhao.substring(4, 6);
@@ -72,6 +75,9 @@ public class YunDanBianHao {
 	}
 	
 	public static String next(String yundanbianhao){
+		if(yundanbianhao.length() <= 10){
+			return null;
+		}
 		String year, month, day, chepaihao, tangshu;
 		year = yundanbianhao.substring(0, 4);
 		month = yundanbianhao.substring(4, 6);
