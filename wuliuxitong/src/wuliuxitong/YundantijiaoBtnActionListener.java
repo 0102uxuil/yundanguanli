@@ -68,6 +68,8 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 		if(this.yundan.option == YunDan.YunDanTianjia){
 			if(this.yundan.yundanbianhao.getText().trim().equals("")){
 				JOptionPane.showMessageDialog(null, "运单编号不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
+			} else if(this.yundan.yundanbianhao.getText().trim().length() <= 10) {
+				JOptionPane.showMessageDialog(null, "运单编号格式错误！长度必须大于10！", "输入错误", JOptionPane.PLAIN_MESSAGE);
 			} else if(this.yundan.chepaihaoCB.getSelectedItem().toString().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "车牌号不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
 			} else if(this.yundan.siji.getText().trim().equals("")) {
