@@ -54,8 +54,8 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 			sql = sql + " and " + "shifouqingsuan = 'no'";
 		}
 		
-//		sql = sql + " order by riqi asc;";
-		sql = sql + " order by huozhu asc;";
+		sql = sql + " order by riqi asc;";
+//		sql = sql + " order by huozhu asc;";
 		
 		try {
 			this.generateVector(sql, this.huodanPanel.vector);
