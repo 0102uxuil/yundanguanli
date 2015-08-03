@@ -51,6 +51,7 @@ CREATE TABLE `huowudan` (
   `baodijia` float(10,2) DEFAULT NULL,
   `qitafeiyong` float(10,2) DEFAULT NULL,
   `beizhu` varchar(255) DEFAULT NULL,
+  `shouxufei` float(10,2) DEFAULT '0.00',
   `yingfujine` float(10,2) NOT NULL,
   `shifujine` float(10,2) NOT NULL DEFAULT '0.00',
   `shifouqingsuan` enum('no','yes') NOT NULL DEFAULT 'no',
@@ -204,4 +205,4 @@ CREATE TABLE `yuekaixiaodan` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-27 15:45:29
+-- Dump completed on 2015-08-03 16:18:24
