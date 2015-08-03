@@ -138,6 +138,7 @@ public class HuodanPanel extends JPanel implements ReLoad{
 //				"折损",
 				"其他费用",
 				"备注",
+				"手续费",
 				"应付金额",
 				"实付金额",
 				"结账备注",

@@ -26,7 +26,7 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String sql;
-		sql = "select yundanbianhao, huowubianhao, chepaihao, riqi, chufadi, mudidi, huozhu, huoming, zhongliang, zhongliang2, jiage, baodijia, qitafeiyong, beizhu, yingfujine, shifujine, jiezhangbeizhu, shifouqingsuan from huowudan where "
+		sql = "select yundanbianhao, huowubianhao, chepaihao, riqi, chufadi, mudidi, huozhu, huoming, zhongliang, zhongliang2, jiage, baodijia, qitafeiyong, beizhu, shouxufei, yingfujine, shifujine, jiezhangbeizhu, shifouqingsuan from huowudan where "
 		+ "riqi >= " + "'" + this.huodanPanel.chuche_start.getText().trim() + "'" + " and " + "riqi <=" + "'" + this.huodanPanel.chuche_end.getText().trim() + "'";
 		if(!this.huodanPanel.chepaihao_text.getText().trim().equals("")){
 			sql = sql + " and " + "chepaihao like " + "'%" + this.huodanPanel.chepaihao_text.getText().trim() + "%'";
@@ -133,7 +133,7 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 			rec_vector.addElement(count);
 			count++;
 //			this.huodanPanel.huodanTb.getColumnModel().getColumn(0).setPreferredWidth(5);
-			for(int i=1; i<=17; i++){
+			for(int i=1; i<=18; i++){
 //				System.out.println(rs.getString(i));
 				rec_vector.addElement(rs.getString(i));
 //				if(rs.getString(i) != null){
@@ -143,7 +143,7 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 //					this.huodanPanel.huodanTb.getColumnModel().getColumn(i).setPreferredWidth(5);
 //				}
 			}
-			if(rs.getString(18).equals("yes")){
+			if(rs.getString(19).equals("yes")){
 				rec_vector.addElement("是");
 //				this.huodanPanel.huodanTb.getColumnModel().getColumn(18).setPreferredWidth(5);
 			} else {
@@ -180,6 +180,7 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 		//合计部分的vector，当vector长度改变时要跟着改变长度，不然会报错
 		rec_vector.addElement("合计：");
 		rec_vector.addElement(total_weight);
+		rec_vector.addElement(null);
 		rec_vector.addElement(null);
 		rec_vector.addElement(null);
 		rec_vector.addElement(null);
