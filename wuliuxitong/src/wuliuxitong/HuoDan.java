@@ -29,6 +29,7 @@ public class HuoDan extends JFrame {
 	JTextField yundanbianhao, huowubianhao, chepaihao, chufadi, mudidi, 
 			   huoming, zhongliang, zhongliang2, jiage, baodijia, 
 			   qitafeiyong, beizhu, 
+			   shouxufei,
 			   huozhu, yingfujine, shifujine, 
 			   jiezhangbeizhu;
 	
@@ -67,6 +68,7 @@ public class HuoDan extends JFrame {
 //			this.zhesun.setEditable(false);
 			this.qitafeiyong.setEditable(false);
 			this.beizhu.setEditable(false);
+			this.shouxufei.setEditable(false);
 			
 			this.huozhu.setEditable(false);
 			this.yingfujine.setEditable(false);
@@ -112,7 +114,9 @@ public class HuoDan extends JFrame {
         this.qitafeiyong = new JTextField(10);
         this.makeLabelAndTextField(this, "其他费用（元）：", this.qitafeiyong, gridbag, c, 2);
         this.beizhu = new JTextField(10);
-        this.makeLabelAndTextField(this, "　　　　　备注：", this.beizhu, gridbag, c, 3);
+        this.makeLabelAndTextField(this, "　　　　　备注：", this.beizhu, gridbag, c, 2);
+        this.shouxufei = new JTextField(10);
+        this.makeLabelAndTextField(this, "　　　　手续费：", this.shouxufei, gridbag, c, 2);
         this.huozhu = new JTextField(10);
         this.addpanelandchangeline(gridbag, c);
         
@@ -201,7 +205,7 @@ public class HuoDan extends JFrame {
 		String sql_huowudan;
 		sql_huowudan = "select yundanbianhao, huowubianhao,"
 					   + " chepaihao, riqi, chufadi, mudidi,"
-					   + " huoming, zhongliang, zhongliang2, jiage, baodijia, qitafeiyong, beizhu,"
+					   + " huoming, zhongliang, zhongliang2, jiage, baodijia, qitafeiyong, beizhu, shouxufei,"
 					   + " huozhu, yingfujine, shifujine, jiezhangbeizhu"
 					   + " from huowudan"
 					   + " where yundanbianhao = " + "'" + this.yundanbianhao.getText().trim() + "'"
@@ -227,6 +231,7 @@ public class HuoDan extends JFrame {
 //			this.zhesun.setText(rs.getString("zhesun"));
 			this.qitafeiyong.setText(rs.getString("qitafeiyong"));
 			this.beizhu.setText(rs.getString("beizhu"));
+			this.shouxufei.setText(rs.getString("shouxufei"));
 			
 			this.huozhu.setText(rs.getString("huozhu"));
 			this.yingfujine.setText(rs.getString("yingfujine"));
