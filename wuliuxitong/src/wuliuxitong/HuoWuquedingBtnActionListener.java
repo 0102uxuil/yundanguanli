@@ -68,6 +68,14 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			}
 			yingfujine = yingfujine + qitafeiyong;
 			
+			float shouxufei;
+			if(this.huowu.shouxufei.getText().trim().equals("") || this.huowu.shouxufei.getText().trim() == null){
+				shouxufei = 0;
+			} else {
+				shouxufei = Float.parseFloat(this.huowu.shouxufei.getText().trim());
+			}
+			yingfujine = yingfujine - shouxufei;
+			
 			this.huowu.tm.setValueAt(yingfujine, this.huowu.selectedRow, 10);
 			this.huowu.tm.setValueAt(this.huowu.shifujine.getText().trim(), this.huowu.selectedRow, 11);
 			this.huowu.tm.setValueAt(this.huowu.jiezhangbeizhu.getText().trim(), this.huowu.selectedRow, 12);
