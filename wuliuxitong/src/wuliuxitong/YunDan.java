@@ -140,8 +140,10 @@ public class YunDan extends JFrame {
         this.makeLabelAndTextField(this, "　　　　司机：", this.siji, gridbag, c, 2);
         this.gonglishu = new JTextField(10);
         this.makeLabelAndTextField(this, "　　　公里数：", this.gonglishu, gridbag, c, 2);
-        this.yifugongzi = new JTextField(10);
-        this.makeLabelAndTextField(this, "　　已付工资：", this.yifugongzi, gridbag, c, 2);
+//        this.yifugongzi = new JTextField(10);
+//        this.makeLabelAndTextField(this, "　　已付工资：", this.yifugongzi, gridbag, c, 2);
+        this.gongzi = new JTextField(10);
+        this.makeLabelAndTextField(this, "　　　　工资：", this.gongzi, gridbag, c, 2);
         
         this.addpanelandchangeline(gridbag, c);
         
@@ -522,8 +524,10 @@ public class YunDan extends JFrame {
 		this.makeLabelAndTextField(this, "　　粤通卡（元）：", this.yuetongka, gridbag, c, 2);
 		this.addpanelandchangeline(gridbag, c);
 		
-		this.gongzi = new JTextField(10);
-		this.makeLabelAndTextField(this, "　　　工资（元）：", this.gongzi, gridbag, c, 2);
+//		this.gongzi = new JTextField(10);
+//		this.makeLabelAndTextField(this, "　　　工资（元）：", this.gongzi, gridbag, c, 2);
+		this.yifugongzi = new JTextField(10);
+		this.makeLabelAndTextField(this, "　已付工资（元）：", this.yifugongzi, gridbag, c, 2);
 		this.zhuangchefei = new JTextField(10);
 		this.makeLabelAndTextField(this, "　　装车费（元）：", this.zhuangchefei, gridbag, c, 2);
 		this.addpanelandchangeline(gridbag, c);

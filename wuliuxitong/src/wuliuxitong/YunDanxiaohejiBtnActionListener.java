@@ -22,8 +22,8 @@ public class YunDanxiaohejiBtnActionListener implements ActionListener {
 //		if(this.yundan.yuetongka.getText() != null && !this.yundan.yuetongka.getText().equals("")){
 //			xiaoheji += Float.parseFloat(this.yundan.yuetongka.getText());
 //		}
-		if(this.yundan.gongzi.getText() != null && !this.yundan.gongzi.getText().equals("")){
-			xiaoheji += Float.parseFloat(this.yundan.gongzi.getText());
+		if(this.yundan.yifugongzi.getText() != null && !this.yundan.yifugongzi.getText().equals("")){
+			xiaoheji += Float.parseFloat(this.yundan.yifugongzi.getText());
 		}
 		if(this.yundan.chifan.getText() != null && !this.yundan.chifan.getText().equals("")){
 			xiaoheji += Float.parseFloat(this.yundan.chifan.getText());
