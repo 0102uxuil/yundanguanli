@@ -19,9 +19,9 @@ public class YunDanxiaohejiBtnActionListener implements ActionListener {
 		if(this.yundan.guolufei.getText() != null && !this.yundan.guolufei.getText().equals("")){
 			xiaoheji += Float.parseFloat(this.yundan.guolufei.getText());
 		}
-		if(this.yundan.yuetongka.getText() != null && !this.yundan.yuetongka.getText().equals("")){
-			xiaoheji += Float.parseFloat(this.yundan.yuetongka.getText());
-		}
+//		if(this.yundan.yuetongka.getText() != null && !this.yundan.yuetongka.getText().equals("")){
+//			xiaoheji += Float.parseFloat(this.yundan.yuetongka.getText());
+//		}
 		if(this.yundan.gongzi.getText() != null && !this.yundan.gongzi.getText().equals("")){
 			xiaoheji += Float.parseFloat(this.yundan.gongzi.getText());
 		}
@@ -63,6 +63,9 @@ public class YunDanxiaohejiBtnActionListener implements ActionListener {
 		}
 		if(this.yundan.xiulifei.getText() != null && !this.yundan.xiulifei.getText().equals("")){
 			xiaoheji += Float.parseFloat(this.yundan.xiulifei.getText());
+		}
+		if(this.yundan.qitafeiyong.getText() != null && !this.yundan.qitafeiyong.getText().equals("")){
+			xiaoheji += Float.parseFloat(this.yundan.qitafeiyong.getText());
 		}
 		this.yundan.xiaoheji.setText("" + xiaoheji);
 	}
