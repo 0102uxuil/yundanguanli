@@ -781,7 +781,7 @@ public class YunDan extends JFrame {
 			this.beizhu.setText(rs.getString("beizhu"));
 			
 			String sql_chuchehuodan;
-			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu"
+			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, shifouqingsuan"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 					+ " and huowubianhao like '0%' " + ";";
@@ -806,11 +806,14 @@ public class YunDan extends JFrame {
 				this.chucheshouxufei.setText(rsc.getString("shouxufei"));
 				this.chucheshifujine.setText(rsc.getString("shifujine"));
 				this.chuchejiezhangbeizhu.setText(rsc.getString("jiezhangbeizhu"));
+				if(rsc.getString("shifouqingsuan").equals("yes")){
+					this.chucheshifouqingsuan.setSelectedItem("ÊÇ");
+				}
 				this.chuchetianjiaBtn.doClick();
 			}
 			
 			String sql_huichehuodan;
-			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu"
+			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, shifouqingsuan"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 //					+ " and biaoji = '0' " + ";";
@@ -836,6 +839,9 @@ public class YunDan extends JFrame {
 				this.huicheshouxufei.setText(rsh.getString("shouxufei"));
 				this.huicheshifujine.setText(rsh.getString("shifujine"));
 				this.huichejiezhangbeizhu.setText(rsh.getString("jiezhangbeizhu"));
+				if(rsh.getString("shifouqingsuan").equals("yes")){
+					this.huicheshifouqingsuan.setSelectedItem("ÊÇ");
+				}
 				this.huichetianjiaBtn.doClick();
 			}
 			
