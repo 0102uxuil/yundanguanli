@@ -29,6 +29,7 @@ public class YundanshanchuBtnActionListener implements ActionListener {
 				DBManager.getInstance().excuteUpdate(sql_kaixiaodan);
 				DBManager.getInstance().excuteUpdate(sql_huowudan);
 				DBManager.getInstance().getConnection().commit();
+				DBManager.getInstance().getConnection().setAutoCommit(true);
 				this.yundan.dispose();
 				this.yundan.reload.reload(this.yundan.yundanbianhao.getText().trim());
 				JOptionPane.showMessageDialog(null, "ÔËµ¥ÒÑÉ¾³ý£¡", "É¾³ý", JOptionPane.PLAIN_MESSAGE);

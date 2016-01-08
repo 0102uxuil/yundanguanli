@@ -32,6 +32,7 @@ public class WeixiudantijiaoBtnActionListener implements ActionListener {
 				DBManager.getInstance().excuteUpdate(sql_yuekaixiaodan);
 				updateweixiudan();
 				DBManager.getInstance().getConnection().commit();
+				DBManager.getInstance().getConnection().setAutoCommit(true);
 				this.weixiudan.dispose();
 				this.weixiudan.weixiudanPanel.chazhaoBtn.doClick();
 				JOptionPane.showMessageDialog(null, "修改成功！", "修改", JOptionPane.PLAIN_MESSAGE);

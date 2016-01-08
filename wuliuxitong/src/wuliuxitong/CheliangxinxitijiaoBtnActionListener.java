@@ -29,6 +29,7 @@ public class CheliangxinxitijiaoBtnActionListener implements ActionListener {
 				DBManager.getInstance().excuteUpdate(sql_cheliangxinxidan);
 				updatecheliangxinxidan();
 				DBManager.getInstance().getConnection().commit();
+				DBManager.getInstance().getConnection().setAutoCommit(true);
 				this.clxxd.dispose();
 				this.clxxd.clxxp.chazhaoBtn.doClick();
 				JOptionPane.showMessageDialog(null, "修改成功！", "修改", JOptionPane.PLAIN_MESSAGE);

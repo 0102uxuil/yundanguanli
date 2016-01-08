@@ -54,6 +54,7 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 					updatekaixiaodan();
 					updatehuowudan();
 					DBManager.getInstance().getConnection().commit();
+					DBManager.getInstance().getConnection().setAutoCommit(true);
 					this.yundan.dispose();
 					this.yundan.reload.reload(null);
 					JOptionPane.showMessageDialog(null, "修改成功！", "修改", JOptionPane.PLAIN_MESSAGE);
@@ -95,6 +96,7 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 						updateluxianbiao();
 						updatehuozhubiao();
 						DBManager.getInstance().getConnection().commit();
+						DBManager.getInstance().getConnection().setAutoCommit(true);
 						this.yundan.dispose();
 //						this.yundan.yundanPanel.yundanbianhao_text.setText(this.yundan.yundanbianhao.getText().trim());
 //						this.yundan.yundanPanel.ChazhaoBtn.doClick();

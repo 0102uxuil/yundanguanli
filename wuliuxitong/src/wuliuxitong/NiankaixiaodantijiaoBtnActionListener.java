@@ -31,6 +31,7 @@ public class NiankaixiaodantijiaoBtnActionListener implements ActionListener {
 				DBManager.getInstance().excuteUpdate(sql_niankaixiaodan);
 				updateniankaixiaodan();
 				DBManager.getInstance().getConnection().commit();
+				DBManager.getInstance().getConnection().setAutoCommit(true);
 				this.niankaixiaodan.dispose();
 				this.niankaixiaodan.niankaixiaoPanel.chazhaoBtn.doClick();
 				JOptionPane.showMessageDialog(null, "修改成功！", "修改", JOptionPane.PLAIN_MESSAGE);

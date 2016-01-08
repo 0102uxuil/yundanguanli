@@ -29,6 +29,7 @@ public class HuodanquedingBtnActionListener implements ActionListener {
 					updatehuowudan();
 //					updatekaixiaodan();
 					DBManager.getInstance().getConnection().commit();
+					DBManager.getInstance().getConnection().setAutoCommit(true);
 					this.huodan.dispose();
 					this.huodan.huodanPanel.chazhaoBtn.doClick();
 					JOptionPane.showMessageDialog(null, "实付金额修改成功！", "结账", JOptionPane.PLAIN_MESSAGE);

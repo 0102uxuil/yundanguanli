@@ -31,6 +31,7 @@ public class YuekaixiaodantijiaoBtnActionListener implements ActionListener {
 				DBManager.getInstance().excuteUpdate(sql_yuekaixiaodan);
 				updateyuekaixiaodan();
 				DBManager.getInstance().getConnection().commit();
+				DBManager.getInstance().getConnection().setAutoCommit(true);
 				this.yuekaixiaodan.dispose();
 				this.yuekaixiaodan.yuekaixiaoPanel.chazhaoBtn.doClick();
 				JOptionPane.showMessageDialog(null, "修改成功！", "修改", JOptionPane.PLAIN_MESSAGE);
@@ -59,6 +60,7 @@ public class YuekaixiaodantijiaoBtnActionListener implements ActionListener {
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "录入失败", JOptionPane.PLAIN_MESSAGE);
 					} catch (FormatException e2){
 						JOptionPane.showMessageDialog(null, e2.getMessage(), "输入格式错误", JOptionPane.PLAIN_MESSAGE);
 					}
