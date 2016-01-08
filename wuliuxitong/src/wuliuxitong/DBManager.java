@@ -23,7 +23,7 @@ public class DBManager {
 //	private static final String DATABASE_URL_MYSQL_5_6 = "jdbc:mysql://192.168.1.199:3306/yundanguanli";
 	private static final String DATABASE_URL_MYSQL_5_6 = "jdbc:mysql://localhost:3306/yundanguanli";
 
-	private static DBManager connectionManager = null;
+	private volatile static DBManager connectionManager = null;
 	
 	//私有化默认构造 作用于单例模式的应用，防止类被直接使用new关键字实例化
 	private DBManager() {
@@ -34,9 +34,9 @@ public class DBManager {
 	public static DBManager getInstance(){
 		if(connectionManager == null){
 			synchronized(DBManager.class){
-			if(connectionManager == null){
-				connectionManager = new DBManager();//不把整个类都写成static的，在保证数据库管理类的静态性下，保持链接dbConnection等的多态性
-			}
+				if(connectionManager == null){
+					connectionManager = new DBManager();//不把整个类都写成static的，在保证数据库管理类的静态性下，保持链接dbConnection等的多态性
+				}
 			}
 		}
 		
