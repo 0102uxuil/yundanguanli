@@ -33,7 +33,11 @@ public class DBManager {
 	
 	public static DBManager getInstance(){
 		if(connectionManager == null){
-			connectionManager = new DBManager();//不把整个类都写成static的，在保证数据库管理类的静态性下，保持链接dbConnection等的多态性
+			synchronized(DBManager.class){
+			if(connectionManager == null){
+				connectionManager = new DBManager();//不把整个类都写成static的，在保证数据库管理类的静态性下，保持链接dbConnection等的多态性
+			}
+			}
 		}
 		
 		return connectionManager;
