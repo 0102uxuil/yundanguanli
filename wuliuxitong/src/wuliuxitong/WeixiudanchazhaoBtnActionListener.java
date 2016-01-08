@@ -28,12 +28,12 @@ public class WeixiudanchazhaoBtnActionListener implements ActionListener {
 		if(!this.weixiudanPanel.chepaihao.getText().trim().equals("")){
 			sql = sql
 					+ " and"
-					+ " chepaihao = " + "'" + this.weixiudanPanel.chepaihao.getText().trim() + "'";
+					+ " chepaihao like " + "'%" + this.weixiudanPanel.chepaihao.getText().trim() + "%'";
 		}
 		if(!this.weixiudanPanel.weixiudian.getText().trim().equals("")){
 			sql = sql
 					+ " and"
-					+ " weixiudian = " + "'" + this.weixiudanPanel.weixiudian.getText().trim() + "'";
+					+ " weixiudian like " + "'%" + this.weixiudanPanel.weixiudian.getText().trim() + "%'";
 		}
 //		} else {
 //			JOptionPane.showMessageDialog(null, "运单编号和车牌号不能全为空！", "错误", JOptionPane.PLAIN_MESSAGE);

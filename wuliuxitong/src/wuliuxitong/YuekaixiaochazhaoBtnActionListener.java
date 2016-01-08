@@ -32,7 +32,7 @@ public class YuekaixiaochazhaoBtnActionListener implements ActionListener {
 		if(!this.yuekaixiaoPanel.chepaihao_text.getText().trim().equals("")){
 			sql = sql
 					+ " and"
-					+ " chepaihao = " + this.yuekaixiaoPanel.chepaihao_text.getText().trim();
+					+ " chepaihao like " + "'%" + this.yuekaixiaoPanel.chepaihao_text.getText().trim() + "%'";
 		}
 //		} else {
 //			JOptionPane.showMessageDialog(null, "运单编号和车牌号不能全为空！", "错误", JOptionPane.PLAIN_MESSAGE);
