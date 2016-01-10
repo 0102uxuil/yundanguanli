@@ -36,7 +36,19 @@ public class CheliangxinxitijiaoBtnActionListener implements ActionListener {
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				try {
+					DBManager.getInstance().getConnection().rollback();
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 			} catch (FormatException e2){
+				try {
+					DBManager.getInstance().getConnection().rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				JOptionPane.showMessageDialog(null, e2.getMessage(), " ‰»Î∏Ò Ω¥ÌŒÛ", JOptionPane.PLAIN_MESSAGE);
 			}
 		}

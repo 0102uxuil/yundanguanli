@@ -35,6 +35,12 @@ public class YundanshanchuBtnActionListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "ÔËµ¥ÒÑÉ¾³ý£¡", "É¾³ý", JOptionPane.PLAIN_MESSAGE);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
+				try {
+					DBManager.getInstance().getConnection().rollback();
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				e1.printStackTrace();
 			}
 		}

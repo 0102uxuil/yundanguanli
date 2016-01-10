@@ -36,6 +36,12 @@ public class HuodanquedingBtnActionListener implements ActionListener {
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					try {
+						DBManager.getInstance().getConnection().rollback();
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
 				}
 			}
 		}

@@ -60,8 +60,20 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 					JOptionPane.showMessageDialog(null, "修改成功！", "修改", JOptionPane.PLAIN_MESSAGE);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
+					try {
+						DBManager.getInstance().getConnection().rollback();
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
 					e1.printStackTrace();
 				} catch (FormatException e2){
+					try {
+						DBManager.getInstance().getConnection().rollback();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					JOptionPane.showMessageDialog(null, e2.getMessage(), "输入格式错误", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
@@ -106,13 +118,19 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 						// TODO Auto-generated catch block
 						try {
 							DBManager.getInstance().getConnection().rollback();
-							JOptionPane.showMessageDialog(null, "车单录入失败！", "录入失败", JOptionPane.PLAIN_MESSAGE);
 						} catch (SQLException e2) {
 							// TODO Auto-generated catch block
 							e2.printStackTrace();
 						}
+						JOptionPane.showMessageDialog(null, "车单录入失败！", "录入失败", JOptionPane.PLAIN_MESSAGE);
 						e1.printStackTrace();
 					} catch (FormatException e2){
+						try {
+							DBManager.getInstance().getConnection().rollback();
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						JOptionPane.showMessageDialog(null, e2.getMessage(), "输入格式错误", JOptionPane.PLAIN_MESSAGE);
 					}
 				} else {
