@@ -20,11 +20,11 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String sql;
-		sql = "select yundanbianhao, chepaihao, chucheriqi, chuchechufadi, chuchemudidi, huicheriqi, huichechufadi, huichemudidi, jiayouzhanjiayou, tingchechangjiayou, tingchechangyoujia, zongkaixiao, gonglishu, youhao from kaixiaodan where "
+		sql = "select yundanbianhao, chepaihao, chucheriqi, chuchechufadi, chuchemudidi, huicheriqi, huichechufadi, huichemudidi, fakuan, jiayouzhanjiayou, tingchechangjiayou, tingchechangyoujia, zongkaixiao, gonglishu, youhao from kaixiaodan where "
 				+ "chucheriqi >= " + "'" + this.yundanPanel.chuche_start.getText().trim() + "'" 
 				+ " and " + "chucheriqi <=" + "'" + this.yundanPanel.chuche_end.getText().trim() + "'";
 		if(!this.yundanPanel.yundanbianhao_text.getText().trim().equals("")){
-			sql = "select yundanbianhao, chepaihao, chucheriqi, chuchechufadi, chuchemudidi, huicheriqi, huichechufadi, huichemudidi, jiayouzhanjiayou, tingchechangjiayou, tingchechangyoujia, zongkaixiao, gonglishu, youhao from kaixiaodan where "
+			sql = "select yundanbianhao, chepaihao, chucheriqi, chuchechufadi, chuchemudidi, huicheriqi, huichechufadi, huichemudidi, fakuan, jiayouzhanjiayou, tingchechangjiayou, tingchechangyoujia, zongkaixiao, gonglishu, youhao from kaixiaodan where "
 					+ "yundanbianhao = " + "'" + this.yundanPanel.yundanbianhao_text.getText().trim() + "'";
 		} else if(!this.yundanPanel.chepaihao_text.getText().trim().equals("")){
 //			sql = sql + " and " + "chepaihao = " + "'" + this.yundanPanel.chepaihao_text.getText().trim() + "'";
@@ -56,7 +56,8 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 		tingchechangjiayoujunjia = 0;
 		tingchechangjiayouheji = 0;
 		zongkaixiaoheji = 0;
-		float yijiezhangzonge, weijiezhangzonge, yuqizonglirun, yidezonglirun;
+		float fakuanheji, yijiezhangzonge, weijiezhangzonge, yuqizonglirun, yidezonglirun;
+		fakuanheji = 0;
 		yijiezhangzonge = 0; 
 		weijiezhangzonge = 0; 
 		yuqizonglirun = 0; 
@@ -78,6 +79,14 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 			rec_vector.addElement(rs.getString("huicheriqi"));
 			rec_vector.addElement(rs.getString("huichechufadi"));
 			rec_vector.addElement(rs.getString("huichemudidi"));
+			
+			if(rs.getString("tingchechangjiayou") != null && !rs.getString("tingchechangjiayou").equals("")){
+				fakuanheji += rs.getFloat("fakuan");
+				rec_vector.addElement(rs.getFloat("fakuan"));
+			} else {
+				rec_vector.addElement("0.0");
+			}
+			
 			rec_vector.addElement(rs.getFloat("tingchechangjiayou"));
 			rec_vector.addElement(rs.getFloat("tingchechangyoujia"));
 			
@@ -219,11 +228,14 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 		yuqizonglirun = (float)(Math.round(yuqizonglirun*100))/100;
 		yidezonglirun = (float)(Math.round(yidezonglirun*100))/100;
 		
+		fakuanheji = (float)(Math.round(fakuanheji*100))/100;
+		
 		Vector tail_vector = new Vector();
 		for(int i=1; i<=8; i++){
 			tail_vector.addElement(null);
 		}
 		tail_vector.addElement("合计：");
+		tail_vector.addElement(fakuanheji+"元");
 		tail_vector.addElement(tingchechangjiayouzongshengshu+"升");
 		tail_vector.addElement(tingchechangjiayoujunjia+"元/升");
 		tail_vector.addElement(tingchechangjiayouheji+"元");

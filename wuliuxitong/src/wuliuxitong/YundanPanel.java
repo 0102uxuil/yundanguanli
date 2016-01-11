@@ -131,6 +131,7 @@ public class YundanPanel extends JPanel implements ReLoad {
 				"回车日期",
 				"回车出发地",
 				"回车目的地",
+				"罚款",
 				"停车场加油",
 				"停车场油价",
 				"停车场加油金额",
