@@ -115,6 +115,10 @@ public class NiankaixiaodantijiaoBtnActionListener implements ActionListener {
 					+ ", shenche = " + "'" + this.niankaixiaodan.shenche.getText().trim() + "'";
 			zongkaixiao += Float.parseFloat(this.niankaixiaodan.shenche.getText().trim());
 		}
+		if(!this.niankaixiaodan.shenchebz.getText().trim().equals("")){
+			sql_niankaixiao = sql_niankaixiao
+					+ ", shenchebz = " + "'" + this.niankaixiaodan.shenchebz.getText().trim() + "'";
+		}
 		
 		if(!this.niankaixiaodan.baoxian.getText().trim().equals("")){
 			if(!this.niankaixiaodan.baoxian.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
@@ -124,6 +128,10 @@ public class NiankaixiaodantijiaoBtnActionListener implements ActionListener {
 					+ ", baoxian = " + "'" + this.niankaixiaodan.baoxian.getText().trim() + "'";
 			zongkaixiao += Float.parseFloat(this.niankaixiaodan.baoxian.getText().trim());
 		}
+		if(!this.niankaixiaodan.baoxianbz.getText().trim().equals("")){
+			sql_niankaixiao = sql_niankaixiao
+					+ ", baoxianbz = " + "'" + this.niankaixiaodan.baoxianbz.getText().trim() + "'";
+		}
 		
 		if(!this.niankaixiaodan.gerenxian.getText().trim().equals("")){
 			if(!this.niankaixiaodan.gerenxian.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
@@ -132,6 +140,19 @@ public class NiankaixiaodantijiaoBtnActionListener implements ActionListener {
 			sql_niankaixiao = sql_niankaixiao
 					+ ", gerenxian = " + "'" + this.niankaixiaodan.gerenxian.getText().trim() + "'";
 			zongkaixiao += Float.parseFloat(this.niankaixiaodan.gerenxian.getText().trim());
+		}
+		if(!this.niankaixiaodan.gerenxianbz.getText().trim().equals("")){
+			sql_niankaixiao = sql_niankaixiao
+					+ ", gerenxianbz = " + "'" + this.niankaixiaodan.gerenxianbz.getText().trim() + "'";
+		}
+		
+		if(!this.niankaixiaodan.shenyingyunzheng.getText().trim().equals("")){
+			if(!this.niankaixiaodan.shenyingyunzheng.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+				throw new FormatException("GPRS必须是正数！");
+			}
+			sql_niankaixiao = sql_niankaixiao
+					+ ", shenyingyunzheng = " + "'" + this.niankaixiaodan.shenyingyunzheng.getText().trim() + "'";
+			zongkaixiao += Float.parseFloat(this.niankaixiaodan.shenyingyunzheng.getText().trim());
 		}
 		
 		if(!this.niankaixiaodan.gprs.getText().trim().equals("")){

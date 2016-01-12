@@ -25,7 +25,7 @@ public class NianKaiXiaoDan extends JFrame {
 	NiankaixiaoPanel niankaixiaoPanel;
 	
 	JComboBox chepaihaoCB;
-	JTextField shenche, baoxian, gerenxian, gprs, qitafeiyong, beizhu;
+	JTextField shenche, shenchebz, baoxian, baoxianbz, gerenxian, gerenxianbz, shenyingyunzheng, gprs, qitafeiyong, beizhu;
 	YearSpinner year;
 	
 	JButton tijiaoBtn, shanchuBtn, quxiaoBtn;
@@ -69,18 +69,32 @@ public class NianKaiXiaoDan extends JFrame {
         
         this.shenche = new JTextField(10);
         this.makeLabelAndTextField(this, "　　审车（元）：", this.shenche, gridbag, c, 2);
+        this.shenchebz = new JTextField(10);
+        this.makeLabelAndTextField(this, "　　     审车备注：", this.shenchebz, gridbag, c, 2);
+        this.addpanelandchangeline(gridbag, c);
+        
         this.baoxian = new JTextField(10);
         this.makeLabelAndTextField(this, "　　车险（元）：", this.baoxian, gridbag, c, 2);
+        this.baoxianbz = new JTextField(10);
+        this.makeLabelAndTextField(this, "　　     车险备注：", this.baoxianbz, gridbag, c, 2);
+        this.addpanelandchangeline(gridbag, c);
+        
         this.gerenxian = new JTextField(10);
         this.makeLabelAndTextField(this, "　个人险（元）：", this.gerenxian, gridbag, c, 2);
+        this.gerenxianbz = new JTextField(10);
+        this.makeLabelAndTextField(this, "　     个人险备注：", this.gerenxianbz, gridbag, c, 2);
+        this.addpanelandchangeline(gridbag, c);
+        
+        this.shenyingyunzheng = new JTextField(10);
+        this.makeLabelAndTextField(this, "审营运证（元）：", this.shenyingyunzheng, gridbag, c, 2);
         this.gprs = new JTextField(10);
-        this.makeLabelAndTextField(this, "　　GPRS（元）：", this.gprs, gridbag, c, 2);
+        this.makeLabelAndTextField(this, "　　 　GPRS（元）：", this.gprs, gridbag, c, 2);
         this.addpanelandchangeline(gridbag, c);
         
         this.qitafeiyong = new JTextField(10);
         this.makeLabelAndTextField(this, "其他费用（元）：", this.qitafeiyong, gridbag, c, 2);
         this.beizhu = new JTextField(10);
-        this.makeLabelAndTextField(this, "　　　　　备注：", this.beizhu, gridbag, c, 2);
+        this.makeLabelAndTextField(this, "　　　　　　 备注：", this.beizhu, gridbag, c, 2);
         this.addpanelandchangeline(gridbag, c);
         
         c.gridwidth = 2;
@@ -158,7 +172,7 @@ public class NianKaiXiaoDan extends JFrame {
 	
 	private void filltext(String chepaihao, String date){
 		String sql_niankaixiaodan;
-		sql_niankaixiaodan = "select chepaihao, riqi, shenche, baoxian, gerenxian, gprs, qitafeiyong, beizhu from niankaixiaodan "
+		sql_niankaixiaodan = "select chepaihao, riqi, shenche, shenchebz, baoxian, baoxianbz, gerenxian, gerenxianbz, shenyingyunzheng, gprs, qitafeiyong, beizhu from niankaixiaodan "
 				+ " where chepaihao = " + "'" + chepaihao + "'" 
 				+ " and riqi = " + "'" + date + "'"
 				+ ";";
@@ -172,8 +186,12 @@ public class NianKaiXiaoDan extends JFrame {
 //			this.chepaihao.setText(rs.getString("chepaihao"));
 			this.year.setYear(rs.getString("riqi"));
 			this.shenche.setText(rs.getString("shenche"));
+			this.shenchebz.setText(rs.getString("shenchebz"));
 			this.baoxian.setText(rs.getString("baoxian"));
+			this.baoxianbz.setText(rs.getString("baoxianbz"));
 			this.gerenxian.setText(rs.getString("gerenxian"));
+			this.gerenxianbz.setText(rs.getString("gerenxianbz"));
+			this.shenyingyunzheng.setText(rs.getString("shenyingyunzheng"));
 			this.gprs.setText(rs.getString("gprs"));
 			this.qitafeiyong.setText(rs.getString("qitafeiyong"));
 			this.beizhu.setText(rs.getString("beizhu"));
