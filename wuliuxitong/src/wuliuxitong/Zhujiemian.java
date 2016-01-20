@@ -65,7 +65,8 @@ public class Zhujiemian extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		frameSize = new Dimension();
 //		frameSize.setSize(width, height);
-		frameSize.setSize(screenSize.getWidth()*4/5, screenSize.getHeight()*4/5);
+//		frameSize.setSize(screenSize.getWidth()*4/5, screenSize.getHeight()*4/5);
+		frameSize.setSize(screenSize.getWidth(), screenSize.getHeight()*14/15);
 		this.setSize(frameSize);
 		this.setLocation((screenSize.width-frameSize.width)/2, (screenSize.height-frameSize.height)/2);
 //		this.setLayout(null);
