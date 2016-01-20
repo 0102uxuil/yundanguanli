@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
+import javax.swing.UIManager;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -53,6 +54,7 @@ public class GongZiMingXiDan extends JFrame {
 		gongzimingxidanTb.setRowSorter(rowSorter);
 		this.gongzimingxidanSP = new JScrollPane(this.gongzimingxidanTb);
 		this.add(this.gongzimingxidanSP, BorderLayout.CENTER);
+		this.gongzimingxidanTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 		
 //		this.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
