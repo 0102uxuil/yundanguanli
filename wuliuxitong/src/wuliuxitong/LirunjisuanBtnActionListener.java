@@ -294,11 +294,12 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		head_vector.addElement("审车");
 		head_vector.addElement("车险");
 		head_vector.addElement("个人险");
+		head_vector.addElement("审营运证");
 		head_vector.addElement("GPRS");
 		head_vector.addElement("其他费用");
 		head_vector.addElement("备注");
 		head_vector.addElement("总开销");
-		for(int i=1; i<=5; i++){
+		for(int i=1; i<=4; i++){
 			head_vector.addElement(null);
 		}
 		vector.addElement(head_vector);
@@ -306,10 +307,11 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		String sql = initniankaixiaosql();
 		ResultSet rs = DBManager.getInstance().excuteQuery(sql);
 		int count = 1;
-		float shencheheji, baoxianheji, gerenxianheji, gprsheji, qitafeiyongheji, zongkaixiaoheji;
+		float shencheheji, baoxianheji, gerenxianheji,shenyingyunzhengheji, gprsheji, qitafeiyongheji, zongkaixiaoheji;
 		shencheheji = 0;
 		baoxianheji = 0;
 		gerenxianheji = 0;
+		shenyingyunzhengheji = 0;
 		gprsheji = 0;
 		qitafeiyongheji = 0;
 		zongkaixiaoheji = 0;
@@ -326,16 +328,18 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			rec_vector.addElement(rs.getString("shenche"));
 			rec_vector.addElement(rs.getString("baoxian"));
 			rec_vector.addElement(rs.getString("gerenxian"));
+			rec_vector.addElement(rs.getString("shenyingyunzheng"));
 			rec_vector.addElement(rs.getString("gprs"));
 			rec_vector.addElement(rs.getString("qitafeiyong"));
 			rec_vector.addElement(rs.getString("beizhu"));
 			rec_vector.addElement(rs.getString("zongkaixiao"));
-			for(int i=1; i<=4; i++){
+			for(int i=1; i<=3; i++){
 				rec_vector.addElement(null);
 			}
 			shencheheji += rs.getFloat("shenche");
 			baoxianheji += rs.getFloat("baoxian");
 			gerenxianheji += rs.getFloat("gerenxian");
+			shenyingyunzhengheji += rs.getFloat("shenyingyunzheng");
 			gprsheji += rs.getFloat("gprs");
 			qitafeiyongheji += rs.getFloat("qitafeiyong");
 			zongkaixiaoheji += rs.getFloat("zongkaixiao");
@@ -350,17 +354,19 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		shencheheji = (float)(Math.round(shencheheji*100))/100;
 		baoxianheji = (float)(Math.round(baoxianheji*100))/100;
 		gerenxianheji = (float)(Math.round(gerenxianheji*100))/100;
+		shenyingyunzhengheji = (float)(Math.round(shenyingyunzhengheji*100))/100;
 		gprsheji = (float)(Math.round(gprsheji*100))/100;
 		qitafeiyongheji = (float)(Math.round(qitafeiyongheji*100))/100;
 		tail_vector.addElement(shencheheji);
 		tail_vector.addElement(baoxianheji);
 		tail_vector.addElement(gerenxianheji);
+		tail_vector.addElement(shenyingyunzhengheji);
 		tail_vector.addElement(gprsheji);
 		tail_vector.addElement(qitafeiyongheji);
 		tail_vector.addElement(null);
 		zongkaixiaoheji = (float)(Math.round(zongkaixiaoheji*100))/100;
 		tail_vector.addElement(zongkaixiaoheji);
-		for(int i=1; i<=4; i++){
+		for(int i=1; i<=3; i++){
 			tail_vector.addElement(null);
 		}
 		vector.addElement(tail_vector);
@@ -371,7 +377,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 	
 	private String initniankaixiaosql(){
 		String sql;
-		sql = "select chepaihao, DATE_FORMAT(riqi ,'%Y'), shenche, baoxian, gerenxian, gprs, qitafeiyong, beizhu, zongkaixiao from niankaixiaodan where "
+		sql = "select chepaihao, DATE_FORMAT(riqi ,'%Y'), shenche, baoxian, gerenxian, shenyingyunzheng, gprs, qitafeiyong, beizhu, zongkaixiao from niankaixiaodan where "
 				+ "riqi >= " + "'" + this.lirunPanel.riqi_start.getYear() + "-01-01" + "'" 
 				+ " and " + "riqi <=" + "'" + this.lirunPanel.riqi_end.getYear() + "-12-31" + "'";
 		if(!this.lirunPanel.chepaihao.getText().trim().equals("")){
