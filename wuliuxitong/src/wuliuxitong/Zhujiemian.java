@@ -1,6 +1,7 @@
 package wuliuxitong;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.CardLayout;
 
@@ -38,6 +39,10 @@ public class Zhujiemian extends JFrame {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		Font font = new Font("Serif",Font.BOLD,18);
+		UIManager.put("TableHeader.font", font);
+		UIManager.put("Table.font", font);
+		UIManager.put("Label.font", font);
 		
 		//设置主界面的大小 初始化frameSize
 		setFrameSize(1000, 500);
@@ -136,4 +141,5 @@ public class Zhujiemian extends JFrame {
 	private void initgongziPanel(){
 		this.panel.add("gongzi", new GongziPanel());
 	}
+	
 }
