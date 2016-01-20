@@ -14,6 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowSorter;
+import javax.swing.UIManager;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -75,5 +76,6 @@ public class CheliangxinxiPanel extends JPanel {
 		cheliangxinxiTb.setRowSorter(rowSorter);
 		this.cheliangxinxiSP = new JScrollPane(this.cheliangxinxiTb);
 		this.add(this.cheliangxinxiSP, BorderLayout.CENTER);
+		this.cheliangxinxiTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 	}
 }

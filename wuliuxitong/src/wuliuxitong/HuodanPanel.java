@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.RowSorter;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -181,6 +182,7 @@ public class HuodanPanel extends JPanel implements ReLoad{
 //		this.huodanSP.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 //		this.huodanTb.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		this.add(this.huodanSP, BorderLayout.CENTER);
+		this.huodanTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 		
 		this.chazhaoBtn.addActionListener(new HuodanChazhaoBtnActionListener(this));
 		

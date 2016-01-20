@@ -14,6 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowSorter;
+import javax.swing.UIManager;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -78,6 +79,7 @@ public class GongziPanel extends JPanel {
 		gongziTb.setRowSorter(rowSorter);
 		this.gongziSP = new JScrollPane(this.gongziTb);
 		this.add(this.gongziSP, BorderLayout.CENTER);
+		this.gongziTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 	}
 	
 }

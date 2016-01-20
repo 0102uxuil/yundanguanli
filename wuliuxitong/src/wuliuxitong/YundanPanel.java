@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
+import javax.swing.UIManager;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -154,6 +155,7 @@ public class YundanPanel extends JPanel implements ReLoad {
 		yundanTb.setRowSorter(rowSorter);
 		this.yundanSP = new JScrollPane(this.yundanTb);
 		this.add(this.yundanSP, BorderLayout.CENTER);
+		this.yundanTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 		
 	}
 

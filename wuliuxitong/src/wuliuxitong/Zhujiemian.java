@@ -43,6 +43,7 @@ public class Zhujiemian extends JFrame {
 		UIManager.put("TableHeader.font", font);
 		UIManager.put("Table.font", font);
 		UIManager.put("Label.font", font);
+		UIManager.put("TableCellHeight", 20);
 		
 		//设置主界面的大小 初始化frameSize
 		setFrameSize(1000, 500);

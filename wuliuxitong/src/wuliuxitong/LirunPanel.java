@@ -15,6 +15,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 
 public class LirunPanel extends JPanel {
 	
@@ -94,5 +95,6 @@ public class LirunPanel extends JPanel {
 //		this.lirunTb.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		this.add(this.lirunSP, BorderLayout.CENTER);
+		this.lirunTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 	}
 }

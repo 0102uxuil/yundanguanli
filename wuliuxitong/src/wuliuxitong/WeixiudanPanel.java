@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowSorter;
+import javax.swing.UIManager;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -84,6 +85,7 @@ public class WeixiudanPanel extends JPanel {
 		weixiudanTb.setRowSorter(rowSorter);
 		this.weixiudanSP = new JScrollPane(this.weixiudanTb);
 		this.add(this.weixiudanSP, BorderLayout.CENTER);
+		this.weixiudanTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 	}
 	
 }

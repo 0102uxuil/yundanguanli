@@ -14,6 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowSorter;
+import javax.swing.UIManager;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -124,6 +125,8 @@ public class YuekaixiaoPanel extends JPanel {
 		yuekaixiaoTb.setRowSorter(rowSorter);
 		this.yuekaixiaoSP = new JScrollPane(this.yuekaixiaoTb);
 		this.add(this.yuekaixiaoSP, BorderLayout.CENTER);
+		this.yuekaixiaoTb.setRowHeight(UIManager.getInt("TableCellHeight"));
+		
 	}
 	
 }

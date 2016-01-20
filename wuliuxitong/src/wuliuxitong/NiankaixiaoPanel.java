@@ -3,6 +3,7 @@ package wuliuxitong;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.Calendar;
 import java.util.Vector;
 
@@ -13,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 public class NiankaixiaoPanel extends JPanel {
 	
@@ -86,5 +88,6 @@ public class NiankaixiaoPanel extends JPanel {
 		this.niankaixiaoTb = new JTable(this.niankaixiaoModel);
 		this.niankaixiaoSP = new JScrollPane(this.niankaixiaoTb);
 		this.add(this.niankaixiaoSP, BorderLayout.CENTER);
+		this.niankaixiaoTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 	}
 }

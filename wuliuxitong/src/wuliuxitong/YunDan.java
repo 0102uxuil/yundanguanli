@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 public class YunDan extends JFrame {
 	
@@ -345,6 +346,7 @@ public class YunDan extends JFrame {
 		this.chuchehuodanTM = new VSTableModel(this.chuchehuodanV, columnNames);
 		this.chuchehuodanTb = new JTable(this.chuchehuodanTM);
 		this.chuchehuodanSP = new JScrollPane(this.chuchehuodanTb);
+		this.chuchehuodanTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 		
 		Dimension d = new Dimension();
 		d.setSize(this.getSize().getWidth(), 100);
@@ -499,6 +501,7 @@ public class YunDan extends JFrame {
 		this.huichehuodanTM = new VSTableModel(this.huichehuodanV, columnNames);
 		this.huichehuodanTb = new JTable(this.huichehuodanTM);
 		this.huichehuodanSP = new JScrollPane(this.huichehuodanTb);
+		this.huichehuodanTb.setRowHeight(UIManager.getInt("TableCellHeight"));
 		d.setSize(this.getSize().getWidth(), 100);
 		this.huichehuodanSP.setPreferredSize(d);
 		c.gridwidth = GridBagConstraints.REMAINDER;
