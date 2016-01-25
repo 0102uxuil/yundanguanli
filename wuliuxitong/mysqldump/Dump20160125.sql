@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: yundanguanli
+-- Host: localhost    Database: yundanguanli
 -- ------------------------------------------------------
--- Server version	5.6.24-log
+-- Server version	5.7.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -149,8 +149,12 @@ CREATE TABLE `niankaixiaodan` (
   `chepaihao` varchar(10) NOT NULL,
   `riqi` date NOT NULL,
   `shenche` float(10,2) DEFAULT NULL,
+  `shenchebz` varchar(255) DEFAULT NULL,
   `baoxian` float(10,2) DEFAULT NULL,
+  `baoxianbz` varchar(255) DEFAULT NULL,
   `gerenxian` float(10,2) DEFAULT NULL,
+  `gerenxianbz` varchar(255) DEFAULT NULL,
+  `shenyingyunzheng` float(10,2) DEFAULT NULL,
   `gprs` float(10,2) DEFAULT NULL,
   `qitafeiyong` float(10,2) DEFAULT NULL,
   `beizhu` varchar(255) DEFAULT NULL,
@@ -205,4 +209,4 @@ CREATE TABLE `yuekaixiaodan` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-03 16:18:24
+-- Dump completed on 2016-01-25 17:09:48
