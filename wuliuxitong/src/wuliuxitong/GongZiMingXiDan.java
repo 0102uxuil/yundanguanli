@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
@@ -16,6 +18,9 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class GongZiMingXiDan extends JFrame {
+	
+	JPanel topPanel;
+	JButton exportExcelBtn;
 	
 	JTable gongzimingxidanTb;
 	JScrollPane gongzimingxidanSP;
@@ -33,6 +38,13 @@ public class GongZiMingXiDan extends JFrame {
 	}
 	
 	public void init(){
+		
+		this.topPanel = new JPanel();
+		this.exportExcelBtn = new JButton("导出表格");
+		this.exportExcelBtn.addActionListener(new ExportGongziExcelBtnActionListener(this));
+		topPanel.add(this.exportExcelBtn);
+		this.add(this.topPanel, BorderLayout.NORTH);
+		
 		String[] columnNames = {"序号",
 				"运单编号",
 				"车牌号",
