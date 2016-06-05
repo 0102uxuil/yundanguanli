@@ -112,9 +112,9 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 						+ ";";
 				ResultSet rs_yn = DBManager.getInstance().excuteQuery(sql_yn);
 				if(rs_yn.next()){
-					if(rs_yn.getString("jiayouzhanjiayou") != null && !rs_yn.getString("jiayouzhanjiayou").equals("")){
-						youhao += rs_yn.getFloat("jiayouzhanjiayou");
-					}
+//					if(rs_yn.getString("jiayouzhanjiayou") != null && !rs_yn.getString("jiayouzhanjiayou").equals("")){
+//						youhao += rs_yn.getFloat("jiayouzhanjiayou");
+//					}
 					if(rs_yn.getString("tingchechangjiayou") != null && !rs_yn.getString("tingchechangjiayou").equals("")){
 						youhao += rs_yn.getFloat("tingchechangjiayou")*rs_yn.getFloat("tingchechangyoujia");
 					}
@@ -122,9 +122,9 @@ public class YundanchazhaoBtnActionListener implements ActionListener {
 			}
 //			zongkaixiao += rs.getFloat("youhao");
 			zongkaixiao += youhao;
-			if(rs.getString("jiayouzhanjiayou") != null && !rs.getString("jiayouzhanjiayou").equals("")){
-				zongkaixiao -= rs.getFloat("jiayouzhanjiayou");
-			}
+//			if(rs.getString("jiayouzhanjiayou") != null && !rs.getString("jiayouzhanjiayou").equals("")){
+//				zongkaixiao -= rs.getFloat("jiayouzhanjiayou");
+//			}
 			if(rs.getString("tingchechangjiayou") != null && !rs.getString("tingchechangjiayou").equals("")){
 				zongkaixiao -= rs.getFloat("tingchechangyoujia")*rs.getFloat("tingchechangjiayou");
 			}
