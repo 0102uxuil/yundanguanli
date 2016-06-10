@@ -227,6 +227,9 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 			sql_kaixiaodan = sql_kaixiaodan + "," + "guolufei=" + Float.parseFloat(this.yundan.guolufei.getText().trim());
 			zongkaixiao += Float.parseFloat(this.yundan.guolufei.getText().trim());
 		}
+		if(this.yundan.yuetongka.getText() ==null || this.yundan.yuetongka.getText().trim().equals("")){
+			throw new FormatException("粤通卡不能为空！");
+		}
 		if(!this.yundan.yuetongka.getText().trim().equals("")){
 			if(!this.yundan.yuetongka.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 				throw new FormatException("粤通卡必须是正数！");
