@@ -60,7 +60,9 @@ public class YunDan extends JFrame {
 	JTextField chuchejiage, huichejiage;
 	JTextField chuchebaodijia, huichebaodijia;
 //	JTextField chuchezhesun, huichezhesun;
-	JTextField chuchehuozhu, huichehuozhu;
+//	JTextField chuchehuozhu, huichehuozhu;
+	DBComboBoxModel chuchehuozhuCBM, huichehuozhuCBM;
+	JComboBox chuchehuozhu, huichehuozhu;
 	JTextField chucheqitafeiyong, huicheqitafeiyong;
 	JTextField chuchebeizhu, huichebeizhu;
 	JTextField chucheyingfujine, huicheyingfujine;
@@ -216,6 +218,7 @@ public class YunDan extends JFrame {
 //        this.chuchehuozhu = new JTextField(10);
 //        this.makeLabelAndTextField(this, "　　　　　货主：", this.chuchehuozhu, gridbag, c, 2);
         this.chuchehuoming = new JTextField(10);
+        /*
         this.chuchehuozhu = new TextFieldWithComboBox(this.chuchehuoming){
 			@Override
 			protected void updateComboBoxModel() throws Exception {
@@ -270,6 +273,17 @@ public class YunDan extends JFrame {
 			}
         };
         this.makeLabelAndTextField(this, "　　　　　货主：", this.chuchehuozhu, gridbag, c, 2);
+        */
+        this.chuchehuozhuCBM = new DBComboBoxModel(
+        		"select huozhuming from huozhuxinxi;"
+        		, "huozhuming");
+        this.chuchehuozhu = new JComboBox(this.chuchehuozhuCBM){
+            public Dimension getPreferredSize() {
+                return new Dimension(comboBoxSize.getPreferredSize().width, comboBoxSize.getPreferredSize().height);
+            }
+        };
+        this.makeLabelAndComboBox(this, "　　　　货主：", this.chuchehuozhu, gridbag, c, 2);
+        this.chuchehuozhu.setEditable(false);
         
         this.makeLabelAndTextField(this, "　　　　　货名：", this.chuchehuoming, gridbag, c, 2);
         this.chuchezhongliang = new JTextField(10);
@@ -392,6 +406,7 @@ public class YunDan extends JFrame {
 //        this.huichehuozhu = new JTextField(10);
 //        this.makeLabelAndTextField(this, "　　　　　货主：", this.huichehuozhu, gridbag, c, 2);
         this.huichehuoming = new JTextField(10);
+        /*
         this.huichehuozhu = new TextFieldWithComboBox(this.huichehuoming){
 			@Override
 			protected void updateComboBoxModel() throws Exception {
@@ -439,6 +454,18 @@ public class YunDan extends JFrame {
 			}
         };
         this.makeLabelAndTextField(this, "　　　　　货主：", this.huichehuozhu, gridbag, c, 2);
+        */
+        this.huichehuozhuCBM = new DBComboBoxModel(
+        		"select huozhuming from huozhuxinxi;"
+        		, "huozhuming");
+        this.huichehuozhu = new JComboBox(this.huichehuozhuCBM){
+            public Dimension getPreferredSize() {
+                return new Dimension(comboBoxSize.getPreferredSize().width, comboBoxSize.getPreferredSize().height);
+            }
+        };
+        this.makeLabelAndComboBox(this, "　　　　货主：", this.huichehuozhu, gridbag, c, 2);
+        this.huichehuozhu.setEditable(false);
+        
         this.makeLabelAndTextField(this, "　　　　　货名：", this.huichehuoming, gridbag, c, 2);
         this.huichezhongliang = new JTextField(10);
         this.makeLabelAndTextField(this, "　　重量（吨）：", this.huichezhongliang, gridbag, c, 2);
@@ -790,7 +817,9 @@ public class YunDan extends JFrame {
 					+ " and huowubianhao like '0%' " + ";";
 			ResultSet rsc = DBManager.getInstance().excuteQuery(sql_chuchehuodan);
 			
+			this.chuchehuodanV.clear();
 			while(rsc.next()){
+				/*
 				String huowubianhao;
 				huowubianhao = rsc.getString("huowubianhao");
 				System.out.println(huowubianhao);
@@ -803,7 +832,7 @@ public class YunDan extends JFrame {
 				this.chuchezhongliang2.setText(rsc.getString("zhongliang2"));
 				this.chuchejiage.setText(rsc.getString("jiage"));
 				this.chuchebaodijia.setText(rsc.getString("baodijia"));
-				this.chuchehuozhu.setText(rsc.getString("huozhu"));
+				this.chuchehuozhu.setSelectedItem(rsc.getString("huozhu"));
 				this.chucheqitafeiyong.setText(rsc.getString("qitafeiyong"));
 				this.chuchebeizhu.setText(rsc.getString("beizhu"));
 				this.chucheshouxufei.setText(rsc.getString("shouxufei"));
@@ -813,7 +842,37 @@ public class YunDan extends JFrame {
 					this.chucheshifouqingsuan.setSelectedItem("是");
 				}
 				this.chuchetianjiaBtn.doClick();
+				*/
+				Vector rec_vector = new Vector();
+				String huowubianhao;
+				huowubianhao = rsc.getString("huowubianhao");
+				rec_vector.addElement(huowubianhao.substring(1, huowubianhao.length()));
+				rec_vector.addElement(rsc.getString("huoming"));
+				rec_vector.addElement(rsc.getString("zhongliang"));
+				rec_vector.addElement(rsc.getString("zhongliang2"));
+				rec_vector.addElement(rsc.getString("jiage"));
+				rec_vector.addElement(rsc.getString("baodijia"));
+				rec_vector.addElement(rsc.getString("huozhu"));
+				rec_vector.addElement(rsc.getString("qitafeiyong"));
+				rec_vector.addElement(rsc.getString("beizhu"));
+				rec_vector.addElement(rsc.getString("shouxufei"));
+				float yingfujine;
+				if(null == rsc.getString("jiage")) {
+					yingfujine = rsc.getFloat("baodijia") + rsc.getFloat("qitafeiyong") - rsc.getFloat("shouxufei");
+				} else {
+					yingfujine = rsc.getFloat("zhongliang")*rsc.getFloat("jiage") + rsc.getFloat("qitafeiyong") - rsc.getFloat("shouxufei");
+				}
+				rec_vector.addElement(yingfujine);
+				rec_vector.addElement(rsc.getString("shifujine"));
+				rec_vector.addElement(rsc.getString("jiezhangbeizhu"));
+				if(rsc.getString("shifouqingsuan").equals("yes")){
+					rec_vector.addElement("是");
+				} else {
+					rec_vector.addElement("否");
+				}
+				this.chuchehuodanV.addElement(rec_vector);
 			}
+			this.huichehuodanTM.fireTableStructureChanged();
 			
 			String sql_huichehuodan;
 			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, shifouqingsuan"
@@ -823,20 +882,21 @@ public class YunDan extends JFrame {
 					+ " and huowubianhao like '1%' " + ";";
 			ResultSet rsh = DBManager.getInstance().excuteQuery(sql_huichehuodan);
 			
+			this.huichehuodanV.clear();
 			while(rsh.next()){
+				/*
 				String huowubianhao;
 				huowubianhao = rsh.getString("huowubianhao");
 				System.out.println(huowubianhao);
 				System.out.println(huowubianhao.length());
 				System.out.println(huowubianhao.substring(1, huowubianhao.length()));
 				this.huichehuowubianhao.setText(huowubianhao.substring(1, huowubianhao.length()));
-//				this.huichehuowubianhao.setText(rsh.getString("huowubianhao"));
 				this.huichehuoming.setText(rsh.getString("huoming"));
 				this.huichezhongliang.setText(rsh.getString("zhongliang"));
 				this.huichezhongliang2.setText(rsh.getString("zhongliang2"));
 				this.huichejiage.setText(rsh.getString("jiage"));
 				this.huichebaodijia.setText(rsh.getString("baodijia"));
-				this.huichehuozhu.setText(rsh.getString("huozhu"));
+				this.huichehuozhu.setSelectedItem(rsh.getString("huozhu"));
 				this.huicheqitafeiyong.setText(rsh.getString("qitafeiyong"));
 				this.huichebeizhu.setText(rsh.getString("beizhu"));
 				this.huicheshouxufei.setText(rsh.getString("shouxufei"));
@@ -846,7 +906,37 @@ public class YunDan extends JFrame {
 					this.huicheshifouqingsuan.setSelectedItem("是");
 				}
 				this.huichetianjiaBtn.doClick();
+				*/
+				Vector rec_vector = new Vector();
+				String huowubianhao;
+				huowubianhao = rsh.getString("huowubianhao");
+				rec_vector.addElement(huowubianhao.substring(1, huowubianhao.length()));
+				rec_vector.addElement(rsh.getString("huoming"));
+				rec_vector.addElement(rsh.getString("zhongliang"));
+				rec_vector.addElement(rsh.getString("zhongliang2"));
+				rec_vector.addElement(rsh.getString("jiage"));
+				rec_vector.addElement(rsh.getString("baodijia"));
+				rec_vector.addElement(rsh.getString("huozhu"));
+				rec_vector.addElement(rsh.getString("qitafeiyong"));
+				rec_vector.addElement(rsh.getString("beizhu"));
+				rec_vector.addElement(rsh.getString("shouxufei"));
+				float yingfujine;
+				if(null == rsh.getString("jiage")) {
+					yingfujine = rsh.getFloat("baodijia") + rsh.getFloat("qitafeiyong") - rsh.getFloat("shouxufei");
+				} else {
+					yingfujine = rsh.getFloat("zhongliang")*rsh.getFloat("jiage") + rsh.getFloat("qitafeiyong") - rsh.getFloat("shouxufei");
+				}
+				rec_vector.addElement(yingfujine);
+				rec_vector.addElement(rsh.getString("shifujine"));
+				rec_vector.addElement(rsh.getString("jiezhangbeizhu"));
+				if(rsh.getString("shifouqingsuan").equals("yes")){
+					rec_vector.addElement("是");
+				} else {
+					rec_vector.addElement("否");
+				}
+				this.huichehuodanV.addElement(rec_vector);
 			}
+			this.huichehuodanTM.fireTableStructureChanged();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -39,7 +39,7 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "货名不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(this.yundan.chuchezhongliang.getText().trim().equals("") || this.yundan.chuchezhongliang.getText().trim() == null){
 			JOptionPane.showMessageDialog(null, "重量不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.yundan.chuchehuozhu.getText().trim().equals("") || this.yundan.chuchehuozhu.getText().trim() == null){
+		} else if(this.yundan.chuchehuozhu.getSelectedItem().toString().trim().equals("") || this.yundan.chuchehuozhu.getSelectedItem().toString().trim() == null){
 			JOptionPane.showMessageDialog(null, "货主不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(((this.yundan.chuchejiage.getText().trim().equals("") || this.yundan.chuchejiage.getText().trim() == null))
 				&& ((this.yundan.chuchebaodijia.getText().trim().equals("") || this.yundan.chuchebaodijia.getText().trim() == null))){
@@ -71,7 +71,7 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			rec_vector.addElement(this.yundan.chuchejiage.getText().trim());
 			rec_vector.addElement(this.yundan.chuchebaodijia.getText().trim());
 //			rec_vector.addElement(this.yundan.chuchezhesun.getText().trim());
-			rec_vector.addElement(this.yundan.chuchehuozhu.getText().trim());
+			rec_vector.addElement(this.yundan.chuchehuozhu.getSelectedItem().toString().trim());
 			rec_vector.addElement(this.yundan.chucheqitafeiyong.getText().trim());
 			rec_vector.addElement(this.yundan.chuchebeizhu.getText().trim());
 			float jine;
@@ -124,7 +124,7 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			this.yundan.chuchejiage.setText("");
 			this.yundan.chuchebaodijia.setText("");
 //			this.yundan.chuchezhesun.setText("");
-			this.yundan.chuchehuozhu.setText("");
+			this.yundan.chuchehuozhu.setSelectedIndex(0);
 			this.yundan.chucheqitafeiyong.setText("");
 			this.yundan.chuchebeizhu.setText("");
 			this.yundan.chucheshifujine.setText("");

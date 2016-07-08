@@ -106,7 +106,7 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 						updatekaixiaodan();
 						updatehuowudan();
 						updateluxianbiao();
-						updatehuozhubiao();
+//						updatehuozhubiao();
 						DBManager.getInstance().getConnection().commit();
 						DBManager.getInstance().getConnection().setAutoCommit(true);
 						this.yundan.dispose();

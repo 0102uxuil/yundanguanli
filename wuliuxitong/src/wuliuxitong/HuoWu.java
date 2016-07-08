@@ -131,18 +131,37 @@ public class HuoWu extends JFrame {
 	}
 	
 	private void initData(VSTableModel tm, int selectedRow){
-		this.huowubianhao.setText(tm.getValueAt(selectedRow, 0).toString());
-		this.huoming.setText(tm.getValueAt(selectedRow, 1).toString());
-		this.zhongliang.setText(tm.getValueAt(selectedRow, 2).toString());
-		this.zhongliang2.setText(tm.getValueAt(selectedRow, 3).toString());
-		this.jiage.setText(tm.getValueAt(selectedRow, 4).toString());
-		this.baodijia.setText(tm.getValueAt(selectedRow, 5).toString());
-		this.huozhu.setText(tm.getValueAt(selectedRow, 6).toString());
-		this.qitafeiyong.setText(tm.getValueAt(selectedRow, 7).toString());
-		this.beizhu.setText(tm.getValueAt(selectedRow, 8).toString());
-		this.shouxufei.setText(tm.getValueAt(selectedRow, 9).toString());
-		this.shifujine.setText(tm.getValueAt(selectedRow, 11).toString());
-		this.jiezhangbeizhu.setText(tm.getValueAt(selectedRow, 12).toString());
+//		this.huowubianhao.setText(tm.getValueAt(selectedRow, 0).toString());
+//		this.huoming.setText(tm.getValueAt(selectedRow, 1).toString());
+//		this.zhongliang.setText(tm.getValueAt(selectedRow, 2).toString());
+//		this.zhongliang2.setText(tm.getValueAt(selectedRow, 3).toString());
+//		this.jiage.setText(tm.getValueAt(selectedRow, 4).toString());
+//		this.baodijia.setText(tm.getValueAt(selectedRow, 5).toString());
+//		this.huozhu.setText(tm.getValueAt(selectedRow, 6).toString());
+//		this.qitafeiyong.setText(tm.getValueAt(selectedRow, 7).toString());
+//		this.beizhu.setText(tm.getValueAt(selectedRow, 8).toString());
+//		this.shouxufei.setText(tm.getValueAt(selectedRow, 9).toString());
+//		this.shifujine.setText(tm.getValueAt(selectedRow, 11).toString());
+//		this.jiezhangbeizhu.setText(tm.getValueAt(selectedRow, 12).toString());
+//		if(tm.getValueAt(selectedRow, 13).toString().equals("是")){
+//			this.shifouqingsuan.setSelectedItem("是");
+//		}
+//		if(tm.getValueAt(selectedRow, 13).toString().equals("否")){
+//			this.shifouqingsuan.setSelectedItem("否");
+//		}
+		
+		this.huowubianhao.setText((String)tm.getValueAt(selectedRow, 0));
+		this.huoming.setText((String)tm.getValueAt(selectedRow, 1));
+		this.zhongliang.setText((String)tm.getValueAt(selectedRow, 2));
+		this.zhongliang2.setText((String)tm.getValueAt(selectedRow, 3));
+		this.jiage.setText((String)tm.getValueAt(selectedRow, 4));
+		this.baodijia.setText((String)tm.getValueAt(selectedRow, 5));
+		this.huozhu.setText((String)tm.getValueAt(selectedRow, 6));
+		this.qitafeiyong.setText((String)tm.getValueAt(selectedRow, 7));
+		this.beizhu.setText((String)tm.getValueAt(selectedRow, 8));
+		this.shouxufei.setText((String)tm.getValueAt(selectedRow, 9));
+		this.shifujine.setText((String)tm.getValueAt(selectedRow, 11));
+		this.jiezhangbeizhu.setText((String)tm.getValueAt(selectedRow, 12));
 		if(tm.getValueAt(selectedRow, 13).toString().equals("是")){
 			this.shifouqingsuan.setSelectedItem("是");
 		}
