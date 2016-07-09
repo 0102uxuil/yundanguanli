@@ -49,7 +49,9 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 				sql_huowudan = "delete from huowudan where yundanbianhao = " + "'" + this.yundan.yundanbianhao.getText().trim() + "'" + ";"; 
 				try {
 					DBManager.getInstance().getConnection().setAutoCommit(false);
+					System.out.println(sql_kaixiaodan);
 					DBManager.getInstance().excuteUpdate(sql_kaixiaodan);
+					System.out.println(sql_huowudan);
 					DBManager.getInstance().excuteUpdate(sql_huowudan);
 					updatekaixiaodan();
 					updatehuowudan();
@@ -444,13 +446,13 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 //				+ "zhongliang=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(1) + "'";
 				+ "zhongliang=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(2).toString());
 				
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(3).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(3) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(3) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(3).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "zhongliang2=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(2) + "'";
 					sql_huowudan = sql_huowudan + "," + "zhongliang2=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(3).toString());
 				}
-				if(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(5).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(5) == null){
+				if(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(5) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(5).equals("") ){
 //					sql_huowudan = sql_huowudan + "," + "jiage=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(3) + "'";
 					sql_huowudan = sql_huowudan + "," + "jiage=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(4).toString());
 				} else {
@@ -462,39 +464,39 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 ////					sql_huowudan = sql_huowudan + "," + "zhesun=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(5) + "'";
 //					sql_huowudan = sql_huowudan + "," + "zhesun=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(6).toString());
 //				}
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(6).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(6) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(6) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(6).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "huozhu=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(6) + "'";
 //					sql_huowudan = sql_huowudan + "," + "huozhu=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(6).toString());
 				}
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(7).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(7) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(7) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(7).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "qitafeiyong=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(7) + "'";
 					sql_huowudan = sql_huowudan + "," + "qitafeiyong=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(7).toString());
 				}
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(8).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(8) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(8) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(8).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "beizhu=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(8) + "'";
 				}
 				
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "shouxufei=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) + "'";
 				}
 				
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "yingfujine=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(9) + "'";
 					sql_huowudan = sql_huowudan + "," + "yingfujine=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10).toString());
 				}
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "shifujine=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(10) + "'";
 					sql_huowudan = sql_huowudan + "," + "shifujine=" + Float.parseFloat(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(11).toString());
 //					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
 				}
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12).equals("") 
-						|| ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12) == null)){
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "jiezhangbeizhu=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(12).toString() + "'";
 				}
 				if(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(13).equals("ÊÇ")){
@@ -522,13 +524,13 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 //				+ "zhongliang=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(1) + "'";
 				+ "zhongliang=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(2).toString());
 				
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(3).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(3) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(3) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(3).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "zhongliang2=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(2) + "'";
 					sql_huowudan = sql_huowudan + "," + "zhongliang2=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(3).toString());
 				}
-				if(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(5).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(5) == null){
+				if(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(5) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(5).equals("") ){
 //					sql_huowudan = sql_huowudan + "," + "jiage=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(3) + "'";
 					sql_huowudan = sql_huowudan + "," + "jiage=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(4).toString());
 				} else {
@@ -540,40 +542,40 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 ////					sql_huowudan = sql_huowudan + "," + "zhesun=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(5) + "'";
 //					sql_huowudan = sql_huowudan + "," + "zhesun=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(6).toString());
 //				}
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(6).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(6) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(6) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(6).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "huozhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(6) + "'";
 //					sql_huowudan = sql_huowudan + "," + "huozhu=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(6).toString());
 				}
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(7).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(7) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(7) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(7).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "qitafeiyong=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(7) + "'";
 					sql_huowudan = sql_huowudan + "," + "qitafeiyong=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(7).toString());
 				}
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "beizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8) + "'";
 					sql_huowudan = sql_huowudan + "," + "beizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(8).toString() + "'";
 				}
 				
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "shouxufei=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9).toString() + "'";
 				}
 				
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "yingfujine=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(9) + "'";
 					sql_huowudan = sql_huowudan + "," + "yingfujine=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10).toString());
 				}
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).equals("") )){
 //					sql_huowudan = sql_huowudan + "," + "shifujine=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(10) + "'";
 					sql_huowudan = sql_huowudan + "," + "shifujine=" + Float.parseFloat(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).toString());
 //					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
 				}
-				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(11).equals("") 
-						|| ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12) == null)){
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "jiezhangbeizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12).toString() + "'";
 				}
 				if(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(13).equals("ÊÇ")){
@@ -581,7 +583,7 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 				}
 				
 				sql_huowudan = sql_huowudan + ";";
-				
+				System.out.println(sql_huowudan);
 				DBManager.getInstance().excuteUpdate(sql_huowudan);
 			}
 		}

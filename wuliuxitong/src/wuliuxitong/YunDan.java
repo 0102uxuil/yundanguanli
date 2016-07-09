@@ -845,8 +845,9 @@ public class YunDan extends JFrame {
 				*/
 				Vector rec_vector = new Vector();
 				String huowubianhao;
-				huowubianhao = rsc.getString("huowubianhao");
-				rec_vector.addElement(huowubianhao.substring(1, huowubianhao.length()));
+//				huowubianhao = rsc.getString("huowubianhao");
+//				rec_vector.addElement(huowubianhao.substring(1, huowubianhao.length()));
+				rec_vector.addElement(rsc.getString("huowubianhao"));
 				rec_vector.addElement(rsc.getString("huoming"));
 				rec_vector.addElement(rsc.getString("zhongliang"));
 				rec_vector.addElement(rsc.getString("zhongliang2"));
@@ -909,8 +910,9 @@ public class YunDan extends JFrame {
 				*/
 				Vector rec_vector = new Vector();
 				String huowubianhao;
-				huowubianhao = rsh.getString("huowubianhao");
-				rec_vector.addElement(huowubianhao.substring(1, huowubianhao.length()));
+//				huowubianhao = rsh.getString("huowubianhao");
+//				rec_vector.addElement(huowubianhao.substring(1, huowubianhao.length()));
+				rec_vector.addElement(rsh.getString("huowubianhao"));
 				rec_vector.addElement(rsh.getString("huoming"));
 				rec_vector.addElement(rsh.getString("zhongliang"));
 				rec_vector.addElement(rsh.getString("zhongliang2"));
