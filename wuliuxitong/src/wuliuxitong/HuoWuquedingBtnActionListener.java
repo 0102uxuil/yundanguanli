@@ -21,9 +21,11 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(this.huowu, "货名不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(this.huowu.zhongliang.getText().trim().equals("") || this.huowu.zhongliang.getText().trim() == null){
 			JOptionPane.showMessageDialog(this.huowu, "重量不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.huowu.huozhu.getText().trim().equals("") || this.huowu.huozhu.getText().trim() == null){
-			JOptionPane.showMessageDialog(this.huowu, "货主不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(((this.huowu.jiage.getText().trim().equals("") || this.huowu.jiage.getText().trim() == null))
+		}
+//		else if(this.huowu.huozhu.getText().trim().equals("") || this.huowu.huozhu.getText().trim() == null){
+//			JOptionPane.showMessageDialog(this.huowu, "货主不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
+//		} 
+		else if(((this.huowu.jiage.getText().trim().equals("") || this.huowu.jiage.getText().trim() == null))
 				&& ((this.huowu.baodijia.getText().trim().equals("") || this.huowu.baodijia.getText().trim() == null))){
 			JOptionPane.showMessageDialog(this.huowu, "价格和保底价不能全为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!((this.huowu.jiage.getText().trim().equals("") || this.huowu.jiage.getText().trim() == null))
@@ -49,7 +51,8 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			this.huowu.tm.setValueAt(this.huowu.zhongliang2.getText().trim(), this.huowu.selectedRow, 3);
 			this.huowu.tm.setValueAt(this.huowu.jiage.getText().trim(), this.huowu.selectedRow, 4);
 			this.huowu.tm.setValueAt(this.huowu.baodijia.getText().trim(), this.huowu.selectedRow, 5);
-			this.huowu.tm.setValueAt(this.huowu.huozhu.getText().trim(), this.huowu.selectedRow, 6);
+//			this.huowu.tm.setValueAt(this.huowu.huozhu.getText().trim(), this.huowu.selectedRow, 6);
+			this.huowu.tm.setValueAt(this.huowu.huozhuCB.getSelectedItem().toString(), this.huowu.selectedRow, 6);
 			this.huowu.tm.setValueAt(this.huowu.qitafeiyong.getText().trim(), this.huowu.selectedRow, 7);
 			this.huowu.tm.setValueAt(this.huowu.beizhu.getText().trim(), this.huowu.selectedRow, 8);
 			this.huowu.tm.setValueAt(this.huowu.shouxufei.getText().trim(), this.huowu.selectedRow, 9);

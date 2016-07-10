@@ -25,6 +25,10 @@ public class HuoWu extends JFrame {
 			   huoming, zhongliang, zhongliang2, jiage, baodijia, 
 			   qitafeiyong, beizhu, shouxufei,
 			   huozhu, shifujine, jiezhangbeizhu;
+	
+	DBComboBoxModel huozhuCBM;
+	JComboBox huozhuCB;
+	
 	JComboBox shifouqingsuan;
 	JButton quedingBtn, quxiaoBtn;
 	
@@ -65,8 +69,19 @@ public class HuoWu extends JFrame {
         this.makeLabelAndTextField(this, "　　　　手续费：", this.shouxufei, gridbag, c, 2);
         this.addpanelandchangeline(gridbag, c);
         
-        this.huozhu = new JTextField(10);
-        this.makeLabelAndTextField(this, "　　　　　货主：", this.huozhu, gridbag, c, 2);
+//        this.huozhu = new JTextField(10);
+//        this.makeLabelAndTextField(this, "　　　　　货主：", this.huozhu, gridbag, c, 2);
+        JTextField comboBoxSize = new JTextField(15);
+        this.huozhuCBM = new DBComboBoxModel(
+        		"select distinct huozhuming from huozhuxinxi order by huozhuming desc;"
+        		, "huozhuming");
+        this.huozhuCB = new JComboBox(this.huozhuCBM){
+            public Dimension getPreferredSize() {
+                return new Dimension(comboBoxSize.getPreferredSize().width, comboBoxSize.getPreferredSize().height);
+            }
+        };
+        this.makeLabelAndComboBox(this, "　　　　　货主：", this.huozhuCB, gridbag, c, 2);
+        
         this.shifujine = new JTextField(10);
         this.makeLabelAndTextField(this, "实付金额（元）：", this.shifujine, gridbag, c, 2);
         this.jiezhangbeizhu = new JTextField(10);
@@ -156,7 +171,8 @@ public class HuoWu extends JFrame {
 		this.zhongliang2.setText((String)tm.getValueAt(selectedRow, 3));
 		this.jiage.setText((String)tm.getValueAt(selectedRow, 4));
 		this.baodijia.setText((String)tm.getValueAt(selectedRow, 5));
-		this.huozhu.setText((String)tm.getValueAt(selectedRow, 6));
+//		this.huozhu.setText((String)tm.getValueAt(selectedRow, 6));
+		this.huozhuCB.setSelectedItem((String)tm.getValueAt(selectedRow, 6));
 		this.qitafeiyong.setText((String)tm.getValueAt(selectedRow, 7));
 		this.beizhu.setText((String)tm.getValueAt(selectedRow, 8));
 		this.shouxufei.setText((String)tm.getValueAt(selectedRow, 9));
