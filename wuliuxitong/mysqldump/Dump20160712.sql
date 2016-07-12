@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.23, for Win32 (x86)
 --
 -- Host: localhost    Database: yundanguanli
 -- ------------------------------------------------------
--- Server version	5.7.10-log
+-- Server version	5.6.24-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -73,6 +73,19 @@ CREATE TABLE `huozhubiao` (
   `huowu` varchar(10) NOT NULL DEFAULT '无',
   `riqi` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`huozhu`,`huowu`,`riqi`,`huozhupinyin`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `huozhuxinxi`
+--
+
+DROP TABLE IF EXISTS `huozhuxinxi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `huozhuxinxi` (
+  `huozhuming` varchar(30) NOT NULL,
+  PRIMARY KEY (`huozhuming`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -209,4 +222,4 @@ CREATE TABLE `yuekaixiaodan` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-25 17:09:48
+-- Dump completed on 2016-07-12 15:46:12
