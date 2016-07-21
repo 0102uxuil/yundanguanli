@@ -3,6 +3,11 @@ package wuliuxitong;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
@@ -59,6 +64,33 @@ public class Zhujiemian extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.splitpane.setDividerLocation(0.1);
+		
+		this.addWindowListener(new WindowAdapter(){
+			@Override
+			public void windowClosing(WindowEvent e)
+	        {
+				File file =new File("e:\\mysqlbackupdir\\"); 
+				//如果文件夹不存在则创建  
+				if  (!file .exists()  && !file .isDirectory())    
+				{     
+				    System.out.println("//不存在");
+				    file .mkdir();
+				    System.out.println("创建文件夹");
+				} else 
+				{
+				    System.out.println("//目录存在");
+				}
+				Date now = new Date();
+				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+				String date = sdf.format(now);
+		        Backup backup=new Backup("root","aa112233","yundanguanli",null,"utf8","e:\\mysqlbackupdir\\" + date + ".sql");
+		        boolean result=backup.backup_run();
+		        if(result){
+		            System.out.println("备份成功");
+	        	}
+	        	System.exit(0);
+	        }
+		});
 	}
 	
 	private void setFrameSize(int width, int height){
