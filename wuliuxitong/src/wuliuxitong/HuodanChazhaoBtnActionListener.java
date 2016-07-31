@@ -26,7 +26,7 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String sql;
-		sql = "select yundanbianhao, huowubianhao, chepaihao, riqi, chufadi, mudidi, huozhu, huoming, zhongliang, zhongliang2, jiage, baodijia, qitafeiyong, beizhu, shouxufei, yingfujine, shifujine, jiezhangbeizhu, shifouqingsuan from huowudan where "
+		sql = "select yundanbianhao, huowubianhao, huowudan.chepaihao, riqi, chufadi, mudidi, huozhu, huoming, zhongliang, zhongliang2, jiage, baodijia, qitafeiyong, beizhu, shouxufei, yingfujine, shifujine, jiezhangbeizhu, shifouqingsuan from huowudan left join cheliangxinxi on huowudan.chepaihao=cheliangxinxi.chepaihao where "
 		+ "riqi >= " + "'" + this.huodanPanel.chuche_start.getText().trim() + "'" + " and " + "riqi <=" + "'" + this.huodanPanel.chuche_end.getText().trim() + "'";
 		if(!this.huodanPanel.chepaihao_text.getText().trim().equals("")){
 			sql = sql + " and " + "chepaihao like " + "'%" + this.huodanPanel.chepaihao_text.getText().trim() + "%'";
@@ -43,9 +43,11 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 //			sql = sql + " and " + "huozhu = " + "'" + this.huodanPanel.huozhu_text.getText().trim() + "'";
 			sql = sql + " and " + "huozhu like " + "'%" + this.huodanPanel.huozhu_text.getText().trim() + "%'";
 		}
-		if(!this.huodanPanel.huoming_text.getText().trim().equals("")){
-//			sql = sql + " and " + "huoming = " + "'" + this.huodanPanel.huoming_text.getText().trim() + "'";
-			sql = sql + " and " + "huoming like " + "'%" + this.huodanPanel.huoming_text.getText().trim() + "%'";
+//		if(!this.huodanPanel.huoming_text.getText().trim().equals("")){
+//			sql = sql + " and " + "huoming like " + "'%" + this.huodanPanel.huoming_text.getText().trim() + "%'";
+//		}
+		if(!this.huodanPanel.siji_text.getText().trim().equals("")){
+			sql = sql + " and " + "siji like " + "'%" + this.huodanPanel.siji_text.getText().trim() + "%'";
 		}
 		System.out.println(this.huodanPanel.shifoujiezhang_cb.getSelectedItem().toString());
 		if(this.huodanPanel.shifoujiezhang_cb.getSelectedItem().toString().equals("ÒÑÇåËã")){

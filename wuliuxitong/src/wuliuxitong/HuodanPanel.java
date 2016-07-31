@@ -31,10 +31,10 @@ import java.util.Vector;
 public class HuodanPanel extends JPanel implements ReLoad{
 	
 	JPanel chaxuntiaojian;
-	JLabel chepaihao, chucheriqi, shifoujiezhang, chufadi, mudidi, huozhu, huoming;
+	JLabel chepaihao, chucheriqi, shifoujiezhang, chufadi, mudidi, huozhu, huoming, siji;
 	DateChooser chuche_start, chuche_end;
 	JComboBox shifoujiezhang_cb;
-	JTextField chepaihao_text, chufadi_text, mudidi_text, huozhu_text, huoming_text;
+	JTextField chepaihao_text, chufadi_text, mudidi_text, huozhu_text, huoming_text, siji_text;
 	JButton chazhaoBtn, xiugaiBtn, chakanyundanBtn;
 	
 	JTable huodanTb;
@@ -88,10 +88,15 @@ public class HuodanPanel extends JPanel implements ReLoad{
 		this.chaxuntiaojian.add(this.huozhu);
 		this.chaxuntiaojian.add(this.huozhu_text);
 		
-		this.huoming = new JLabel("货名：");
-		this.huoming_text = new JTextField(10);
-		this.chaxuntiaojian.add(this.huoming);
-		this.chaxuntiaojian.add(this.huoming_text);
+//		this.huoming = new JLabel("货名：");
+//		this.huoming_text = new JTextField(10);
+//		this.chaxuntiaojian.add(this.huoming);
+//		this.chaxuntiaojian.add(this.huoming_text);
+		
+		this.siji = new JLabel("司机：");
+		this.siji_text = new JTextField(10);
+		this.chaxuntiaojian.add(this.siji);
+		this.chaxuntiaojian.add(this.siji_text);
 		
 		this.chazhaoBtn = new JButton("查找");
 		this.chaxuntiaojian.add(this.chazhaoBtn);
