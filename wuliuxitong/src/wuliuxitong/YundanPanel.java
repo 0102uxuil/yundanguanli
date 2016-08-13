@@ -30,6 +30,7 @@ public class YundanPanel extends JPanel implements ReLoad {
 	DateChooser chuche_start, chuche_end;
 	
 	JButton ChazhaoBtn, yundantianjiaBtn, yundanxiugaiBtn;
+	JButton daochuexcelBtn;
 	
 	JTable yundanTb;
 	JScrollPane yundanSP;
@@ -120,6 +121,10 @@ public class YundanPanel extends JPanel implements ReLoad {
 //				}
 //			}
 //		});
+		
+		this.daochuexcelBtn = new JButton("导出表格");
+		this.chaxuntiaojian.add(this.daochuexcelBtn);
+		this.daochuexcelBtn.addActionListener(new ExportYundanExcelBtnActionListener(this));
 		
 		this.add(chaxuntiaojian, BorderLayout.NORTH);
 		
