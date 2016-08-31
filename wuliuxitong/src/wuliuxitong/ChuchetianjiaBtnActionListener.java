@@ -62,6 +62,10 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "出车手续费必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.chucheshifujine.getText().trim().equals("") && this.yundan.chucheshifujine.getText().trim() != null && !this.yundan.chucheshifujine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "实付金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(this.yundan.chuchesijidanjia.getText().trim() == null || this.yundan.chuchesijidanjia.getText().trim().equals("")){
+			JOptionPane.showMessageDialog(null, "司机单价不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(!this.yundan.chuchesijidanjia.getText().trim().equals("") && this.yundan.chuchesijidanjia.getText().trim() != null && !this.yundan.chuchesijidanjia.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+			JOptionPane.showMessageDialog(null, "司机单价必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else {
 			Vector rec_vector = new Vector();
 			rec_vector.addElement("0"+this.yundan.chuchehuowubianhao.getText().trim());
@@ -115,6 +119,10 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			rec_vector.addElement(jine);
 			rec_vector.addElement(this.yundan.chucheshifujine.getText().trim());
 			rec_vector.addElement(this.yundan.chuchejiezhangbeizhu.getText().trim());
+			rec_vector.addElement(this.yundan.chuchesijidanjia.getText().trim());
+			float chucheyingfusijijine;
+			chucheyingfusijijine = Float.parseFloat(this.yundan.chuchezhongliang.getText().trim())*Float.parseFloat(this.yundan.chuchesijidanjia.getText().trim());
+			rec_vector.addElement(chucheyingfusijijine);
 			rec_vector.addElement(this.yundan.chucheshifouqingsuan.getSelectedItem().toString().trim());
 			
 			this.yundan.chuchehuodanV.addElement(rec_vector);
@@ -132,6 +140,7 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			this.yundan.chuchebeizhu.setText("");
 			this.yundan.chucheshifujine.setText("");
 			this.yundan.chuchejiezhangbeizhu.setText("");
+			this.yundan.chuchesijidanjia.setText("");
 			this.yundan.chucheshifouqingsuan.setSelectedItem("否");
 			this.yundan.chuchehuodanTM.fireTableStructureChanged();
 		}

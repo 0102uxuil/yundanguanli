@@ -56,6 +56,7 @@ CREATE TABLE `huowudan` (
   `shifujine` float(10,2) NOT NULL DEFAULT '0.00',
   `shifouqingsuan` enum('no','yes') NOT NULL DEFAULT 'no',
   `jiezhangbeizhu` varchar(255) DEFAULT NULL,
+  `sijijiage` float(10,2) DEFAULT NULL,
   PRIMARY KEY (`yundanbianhao`,`huowubianhao`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -222,4 +223,4 @@ CREATE TABLE `yuekaixiaodan` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-12 15:46:12
+-- Dump completed on 2016-08-31 21:49:04

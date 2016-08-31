@@ -71,6 +71,8 @@ public class YunDan extends JFrame {
 	
 	JTextField chucheshouxufei, huicheshouxufei;
 	
+	JTextField chuchesijidanjia, huichesijidanjia;
+	
 	float chucheyingfuzonge, chucheshifuzonge, huicheyingfuzonge, huicheshifuzonge;
 	
 	JComboBox chucheshifouqingsuan, huicheshifouqingsuan;
@@ -313,9 +315,14 @@ public class YunDan extends JFrame {
         this.chuchejiezhangbeizhu = new JTextField(10);
         this.makeLabelAndTextField(this, "　　　结账备注：", this.chuchejiezhangbeizhu, gridbag, c, 2);
         
+        this.chuchesijidanjia = new JTextField(10);
+        this.makeLabelAndTextField(this, "司机单价（元）：", this.chuchesijidanjia, gridbag, c, 2);
+        
         String[] str = {"否", "是"};
         this.chucheshifouqingsuan = new JComboBox(str);
         this.makeLabelAndComboBox(this, "　是否清算：", this.chucheshifouqingsuan, gridbag, c, 2);
+        
+        this.addpanelandchangeline(gridbag, c);
         
         JPanel cp;
         cp = new JPanel();
@@ -354,6 +361,8 @@ public class YunDan extends JFrame {
 				"应付金额",
 				"实付金额",
 				"结账备注",
+				"司机单价",
+				"应付司机金额",
 				"是否清算"};
 		
 		this.chuchehuodanV = new Vector();
@@ -494,9 +503,14 @@ public class YunDan extends JFrame {
         this.huichejiezhangbeizhu = new JTextField(10);
         this.makeLabelAndTextField(this, "　　　结账备注：", this.huichejiezhangbeizhu, gridbag, c, 2);
         
+        this.huichesijidanjia = new JTextField(10);
+        this.makeLabelAndTextField(this, "司机单价（元）：", this.huichesijidanjia, gridbag, c, 2);
+        
 //        String[] str = {"否", "是"};
         this.huicheshifouqingsuan = new JComboBox(str);
         this.makeLabelAndComboBox(this, "　　是否清算：", this.huicheshifouqingsuan, gridbag, c, 2);
+        
+        this.addpanelandchangeline(gridbag, c);
         
         JPanel hp;
         hp = new JPanel();
@@ -814,7 +828,7 @@ public class YunDan extends JFrame {
 			this.beizhu.setText(rs.getString("beizhu"));
 			
 			String sql_chuchehuodan;
-			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, shifouqingsuan"
+			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, sijijiage, shifouqingsuan"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 					+ " and huowubianhao like '0%' " + ";";
@@ -869,6 +883,10 @@ public class YunDan extends JFrame {
 				rec_vector.addElement(yingfujine);
 				rec_vector.addElement(rsc.getString("shifujine"));
 				rec_vector.addElement(rsc.getString("jiezhangbeizhu"));
+				rec_vector.addElement(rsc.getString("sijijiage"));
+				float yingfusijijine;
+				yingfusijijine = rsc.getFloat("zhongliang")*rsc.getFloat("sijijiage");
+				rec_vector.addElement(yingfusijijine);
 				if(rsc.getString("shifouqingsuan").equals("yes")){
 					rec_vector.addElement("是");
 				} else {
@@ -879,7 +897,7 @@ public class YunDan extends JFrame {
 			this.huichehuodanTM.fireTableStructureChanged();
 			
 			String sql_huichehuodan;
-			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, shifouqingsuan"
+			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, sijijiage, shifouqingsuan"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 //					+ " and biaoji = '0' " + ";";
@@ -934,6 +952,10 @@ public class YunDan extends JFrame {
 				rec_vector.addElement(yingfujine);
 				rec_vector.addElement(rsh.getString("shifujine"));
 				rec_vector.addElement(rsh.getString("jiezhangbeizhu"));
+				rec_vector.addElement(rsh.getString("sijijiage"));
+				float yingfusijijine;
+				yingfusijijine = rsh.getFloat("zhongliang")*rsh.getFloat("sijijiage");
+				rec_vector.addElement(yingfusijijine);
 				if(rsh.getString("shifouqingsuan").equals("yes")){
 					rec_vector.addElement("是");
 				} else {
