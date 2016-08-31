@@ -503,6 +503,10 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(13).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "sijijiage=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(13).toString() + "'";
 				}
+				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(14) == null
+						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(14).equals("") )){
+					sql_huowudan = sql_huowudan + "," + "sijijiagejine=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(14).toString() + "'";
+				}
 				if(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(15).equals("ÊÇ")){
 					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";
 				}
@@ -582,9 +586,13 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12).equals("") )){
 					sql_huowudan = sql_huowudan + "," + "jiezhangbeizhu=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(12).toString() + "'";
 				}
-				if(!(((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(13) == null
-						||((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(13).equals("") )){
-					sql_huowudan = sql_huowudan + "," + "sijijiage=" + "'" + ((Vector)(this.yundan.chuchehuodanV).elementAt(i)).elementAt(13).toString() + "'";
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(13) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(13).equals("") )){
+					sql_huowudan = sql_huowudan + "," + "sijijiage=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(13).toString() + "'";
+				}
+				if(!(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(14) == null
+						||((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(14).equals("") )){
+					sql_huowudan = sql_huowudan + "," + "sijijiagejine=" + "'" + ((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(14).toString() + "'";
 				}
 				if(((Vector)(this.yundan.huichehuodanV).elementAt(i)).elementAt(15).equals("ÊÇ")){
 					sql_huowudan = sql_huowudan + "," + "shifouqingsuan= 'yes'";

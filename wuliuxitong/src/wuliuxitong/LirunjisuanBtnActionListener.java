@@ -63,12 +63,13 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		vector.removeAllElements();//初始化向量对象
 		ResultSet rs = DBManager.getInstance().excuteQuery(sql);
 		int count = 1;
-		float zongkaixiaoheji, yijiezhangzonge, weijiezhangzonge, yuqizonglirun, yidezonglirun;
+		float zongkaixiaoheji, yijiezhangzonge, weijiezhangzonge, yuqizonglirun, yidezonglirun, sijizonglirun;
 		zongkaixiaoheji = 0;
 		yijiezhangzonge = 0; 
 		weijiezhangzonge = 0; 
 		yuqizonglirun = 0; 
 		yidezonglirun = 0;
+		sijizonglirun = 0;
 		while(rs.next()){ 
 			Vector rec_vector=new Vector(); 
 			//从结果集中取数据放入向量rec_vector中
@@ -79,19 +80,20 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			}
 			
 			String sql_chuchehuodan, sql_huichehuodan;
-			sql_chuchehuodan = "select yingfujine, shifujine, shifouqingsuan from huowudan where "
+			sql_chuchehuodan = "select yingfujine, shifujine, shifouqingsuan, sijijiagejine from huowudan where "
 					+ " yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 					+ " and huowubianhao like '0%';";
-			sql_huichehuodan = "select yingfujine, shifujine, shifouqingsuan from huowudan where "
+			sql_huichehuodan = "select yingfujine, shifujine, shifouqingsuan, sijijiagejine from huowudan where "
 					+ " yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 					+ " and huowubianhao like '1%';";
 			ResultSet rsc = DBManager.getInstance().excuteQuery(sql_chuchehuodan);
 			ResultSet rsh = DBManager.getInstance().excuteQuery(sql_huichehuodan);
-			float chucheyijiezhangjine, huicheyijiezhangjine, chucheweijiezhangjine, huicheweijiezhangjine;
+			float chucheyijiezhangjine, huicheyijiezhangjine, chucheweijiezhangjine, huicheweijiezhangjine, sijilirun;
 			chucheyijiezhangjine = 0;
 			huicheyijiezhangjine = 0;
 			chucheweijiezhangjine = 0;
 			huicheweijiezhangjine = 0;
+			sijilirun = 0;
 			while(rsc.next()){
 				if(rsc.getString("shifouqingsuan").equals("yes")){
 					chucheyijiezhangjine += rsc.getFloat("shifujine");
@@ -100,6 +102,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 					chucheyijiezhangjine += rsc.getFloat("shifujine");
 					chucheweijiezhangjine =chucheweijiezhangjine + rsc.getFloat("yingfujine") - rsc.getFloat("shifujine");
 				}
+				sijilirun += rsc.getFloat("sijijiagejine");
 			}
 			while(rsh.next()){
 				if(rsh.getString("shifouqingsuan").equals("yes")){
@@ -109,6 +112,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 					huicheyijiezhangjine += rsh.getFloat("shifujine");
 					huicheweijiezhangjine = huicheweijiezhangjine + rsh.getFloat("yingfujine") - rsh.getFloat("shifujine");
 				}
+				sijilirun += rsh.getFloat("sijijiagejine");
 			}
 			float yuqilirun, yidelirun;
 			float yijiezhangjine, weijiezhangjine;
@@ -151,7 +155,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			yidelirun = chucheyijiezhangjine + huicheyijiezhangjine
 //					- rs.getFloat("zongkaixiao");
 					- zongkaixiao;
-			
+			sijilirun -= zongkaixiao;
 //			rec_vector.addElement(chucheyijiezhangjine);
 //			rec_vector.addElement(huicheyijiezhangjine);
 //			rec_vector.addElement(chucheweijiezhangjine);
@@ -160,15 +164,18 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			weijiezhangjine = (float)(Math.round(weijiezhangjine*100))/100;
 			yuqilirun = (float)(Math.round(yuqilirun*100))/100;
 			yidelirun = (float)(Math.round(yidelirun*100))/100;
+			sijilirun = (float)(Math.round(sijilirun*100))/100;
 			rec_vector.addElement(yijiezhangjine);
 			rec_vector.addElement(weijiezhangjine);
 			rec_vector.addElement(yuqilirun);
 			rec_vector.addElement(yidelirun);
+			rec_vector.addElement(sijilirun);
 
 			yijiezhangzonge += yijiezhangjine;
 			weijiezhangzonge += weijiezhangjine;
 			yuqizonglirun += yuqilirun;
 			yidezonglirun += yidelirun;
+			sijizonglirun += sijilirun;
 			
 //			zongkaixiaoheji += rs.getFloat("zongkaixiao");
 			zongkaixiaoheji += zongkaixiao;
@@ -187,11 +194,13 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		weijiezhangzonge = (float)(Math.round(weijiezhangzonge*100))/100;
 		yuqizonglirun = (float)(Math.round(yuqizonglirun*100))/100;
 		yidezonglirun = (float)(Math.round(yidezonglirun*100))/100;
+		sijizonglirun = (float)(Math.round(sijizonglirun*100))/100;
 		rec_vector.addElement(zongkaixiaoheji);
 		rec_vector.addElement(yijiezhangzonge);
 		rec_vector.addElement(weijiezhangzonge);
 		rec_vector.addElement(yuqizonglirun);
 		rec_vector.addElement(yidezonglirun);
+		rec_vector.addElement(sijizonglirun);
 		vector.addElement(rec_vector);
 		
 		this.lirunYuqi += yuqizonglirun;
@@ -227,7 +236,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		head_vector.addElement("其他费用");
 		head_vector.addElement("备注");
 		head_vector.addElement("总开销");
-		for(int i=1; i<=6; i++){
+		for(int i=1; i<=7; i++){
 			head_vector.addElement(null);
 		}
 		vector.addElement(head_vector);
@@ -248,7 +257,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			for(int i=1; i<=7; i++){
 				rec_vector.addElement(rs.getString(i));
 			}
-			for(int i=1; i<=6; i++){
+			for(int i=1; i<=7; i++){
 				rec_vector.addElement(null);
 			}
 			yuetongkaheji += rs.getFloat("yuetongka");
@@ -273,7 +282,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		tail_vector.addElement(null);
 		zongkaixiaoheji = (float)(Math.round(zongkaixiaoheji*100))/100;
 		tail_vector.addElement(zongkaixiaoheji);
-		for(int i=1; i<=6; i++){
+		for(int i=1; i<=7; i++){
 			tail_vector.addElement(null);
 		}
 		vector.addElement(tail_vector);
@@ -348,7 +357,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			rec_vector.addElement(rs.getString("qitafeiyong"));
 			rec_vector.addElement(rs.getString("beizhu"));
 			rec_vector.addElement(rs.getString("zongkaixiao"));
-			for(int i=1; i<=3; i++){
+			for(int i=1; i<=4; i++){
 				rec_vector.addElement(null);
 			}
 			shencheheji += rs.getFloat("shenche");
@@ -381,7 +390,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		tail_vector.addElement(null);
 		zongkaixiaoheji = (float)(Math.round(zongkaixiaoheji*100))/100;
 		tail_vector.addElement(zongkaixiaoheji);
-		for(int i=1; i<=3; i++){
+		for(int i=1; i<=4; i++){
 			tail_vector.addElement(null);
 		}
 		vector.addElement(tail_vector);
@@ -418,7 +427,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		head_vector.addElement("维修项目");
 		head_vector.addElement("维修金额");
 		head_vector.addElement("备注");
-		for(int i=1; i<=7; i++){
+		for(int i=1; i<=8; i++){
 			head_vector.addElement(null);
 		}
 		vector.addElement(head_vector);
@@ -436,7 +445,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			for(int i=1; i<=6; i++){
 				rec_vector.addElement(rs.getString(i));
 			}
-			for(int i=1; i<=7; i++){
+			for(int i=1; i<=8; i++){
 				rec_vector.addElement(null);
 			}
 			weixiujineheji += rs.getFloat("weixiujine");
@@ -452,7 +461,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		tail_vector.addElement("合计：");
 		weixiujineheji = (float)(Math.round(weixiujineheji*100))/100;
 		tail_vector.addElement(weixiujineheji);
-		for(int i=1; i<=8; i++){
+		for(int i=1; i<=9; i++){
 			tail_vector.addElement(null);
 		}
 		vector.addElement(tail_vector);
@@ -475,7 +484,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 	
 	private void appendVectorForHeji(Vector vector){
 		Vector head_vector=new Vector();
-		for(int i=1; i<=9; i++){
+		for(int i=1; i<=10; i++){
 			head_vector.addElement(null);
 		}
 		head_vector.addElement("总　计：");
@@ -491,7 +500,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 	
 	private void appendVectorForBlank(Vector vector){
 		Vector head_vector=new Vector();
-		for(int i=1; i<=14; i++){
+		for(int i=1; i<=15; i++){
 			head_vector.addElement(null);
 		}
 		

@@ -116,7 +116,7 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 			rec_vector.addElement(this.yundan.huichejiezhangbeizhu.getText().trim());
 			rec_vector.addElement(this.yundan.huichesijidanjia.getText().trim());
 			float huicheyingfusijijine;
-			huicheyingfusijijine = Float.parseFloat(this.yundan.huichesijidanjia.getText().trim())*Float.parseFloat(this.yundan.huichesijidanjia.getText().trim());
+			huicheyingfusijijine = Float.parseFloat(this.yundan.huichezhongliang.getText().trim())*Float.parseFloat(this.yundan.huichesijidanjia.getText().trim());
 			rec_vector.addElement(huicheyingfusijijine);
 			rec_vector.addElement(this.yundan.huicheshifouqingsuan.getSelectedItem().toString().trim());
 			this.yundan.huichehuodanV.addElement(rec_vector);
