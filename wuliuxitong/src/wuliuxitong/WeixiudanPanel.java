@@ -19,7 +19,7 @@ public class WeixiudanPanel extends JPanel {
 
 	JPanel chaxuntiaojian;
 	
-	JTextField chepaihao, weixiudian;
+	JTextField chepaihao, weixiudian, weixiuxiangmu;
 	DateChooser riqi_start, riqi_end;
 	
 	JTable weixiudanTb;
@@ -55,6 +55,10 @@ public class WeixiudanPanel extends JPanel {
 		this.chaxuntiaojian.add(new JLabel("维修地点："));
 		this.weixiudian = new JTextField(10);
 		this.chaxuntiaojian.add(this.weixiudian);
+		
+		this.chaxuntiaojian.add(new JLabel("维修项目："));
+		this.weixiuxiangmu = new JTextField(10);
+		this.chaxuntiaojian.add(this.weixiuxiangmu);
 		
 		this.chazhaoBtn = new JButton("查找");
 		this.chaxuntiaojian.add(this.chazhaoBtn);

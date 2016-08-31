@@ -35,6 +35,11 @@ public class WeixiudanchazhaoBtnActionListener implements ActionListener {
 					+ " and"
 					+ " weixiudian like " + "'%" + this.weixiudanPanel.weixiudian.getText().trim() + "%'";
 		}
+		if(!this.weixiudanPanel.weixiuxiangmu.getText().trim().equals("")){
+			sql = sql
+					+ " and"
+					+ " weixiuxiangmu like " + "'%" + this.weixiudanPanel.weixiuxiangmu.getText().trim() + "%'";
+		}
 //		} else {
 //			JOptionPane.showMessageDialog(null, "运单编号和车牌号不能全为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 //		}
