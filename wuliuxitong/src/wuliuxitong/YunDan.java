@@ -673,6 +673,8 @@ public class YunDan extends JFrame {
         if(option == YunDan.YunDanTianjia){
         	this.initYundanbianhao();
         	this.yuetongka.setText("0");
+        	this.chuchehuowubianhao.setText("1");
+    		this.huichehuowubianhao.setText("1");
         }
         
         if(option == YunDan.YunDanXiugai){

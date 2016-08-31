@@ -118,6 +118,9 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			rec_vector.addElement(this.yundan.chucheshifouqingsuan.getSelectedItem().toString().trim());
 			
 			this.yundan.chuchehuodanV.addElement(rec_vector);
+			String str = this.yundan.chuchehuowubianhao.getText();
+			str = String.valueOf((Integer.parseInt(str)+1));
+			this.yundan.chuchehuowubianhao.setText(str);
 			this.yundan.chuchehuoming.setText("");
 			this.yundan.chuchezhongliang.setText("");
 			this.yundan.chuchezhongliang2.setText("");
