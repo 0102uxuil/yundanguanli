@@ -60,10 +60,12 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "其他费用必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.huicheshifujine.getText().trim().equals("") && this.yundan.huicheshifujine.getText().trim() != null && !this.yundan.huicheshifujine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "实付金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.yundan.huichesijidanjia.getText().trim() == null || this.yundan.huichesijidanjia.getText().trim().equals("")){
-			JOptionPane.showMessageDialog(null, "司机单价不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if((this.yundan.huichesijidanjia.getText().trim() == null || this.yundan.huichesijidanjia.getText().trim().equals("")) && (this.yundan.huichesijijine.getText().trim() == null || this.yundan.huichesijijine.getText().trim().equals(""))){
+			JOptionPane.showMessageDialog(null, "司机单价司机金额不能同时为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.huichesijidanjia.getText().trim().equals("") && this.yundan.huichesijidanjia.getText().trim() != null && !this.yundan.huichesijidanjia.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "司机单价必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(!this.yundan.huichesijijine.getText().trim().equals("") && this.yundan.huichesijijine.getText().trim() != null && !this.yundan.huichesijijine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+			JOptionPane.showMessageDialog(null, "司机金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else {
 			Vector rec_vector = new Vector();
 			rec_vector.addElement("1"+this.yundan.huichehuowubianhao.getText().trim());
@@ -114,10 +116,21 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 			rec_vector.addElement(jine);
 			rec_vector.addElement(this.yundan.huicheshifujine.getText().trim());
 			rec_vector.addElement(this.yundan.huichejiezhangbeizhu.getText().trim());
-			rec_vector.addElement(this.yundan.huichesijidanjia.getText().trim());
-			float huicheyingfusijijine;
-			huicheyingfusijijine = Float.parseFloat(this.yundan.huichezhongliang.getText().trim())*Float.parseFloat(this.yundan.huichesijidanjia.getText().trim());
-			rec_vector.addElement(huicheyingfusijijine);
+			if(this.yundan.huichesijidanjia.getText().trim() != null && !this.yundan.huichesijidanjia.getText().trim().equals("")){
+				rec_vector.addElement(this.yundan.huichesijidanjia.getText().trim());
+				float huicheyingfusijijine;
+				huicheyingfusijijine = Float.parseFloat(this.yundan.huichezhongliang.getText().trim())*Float.parseFloat(this.yundan.huichesijidanjia.getText().trim());
+				rec_vector.addElement(huicheyingfusijijine);
+			} else {
+				float huichesijijiage;
+				huichesijijiage = Float.parseFloat(this.yundan.huichesijijine.getText().trim())/Float.parseFloat(this.yundan.huichezhongliang.getText().trim());
+				rec_vector.addElement(huichesijijiage);
+				rec_vector.addElement(this.yundan.huichesijijine.getText().trim());
+			}
+//			rec_vector.addElement(this.yundan.huichesijidanjia.getText().trim());
+//			float huicheyingfusijijine;
+//			huicheyingfusijijine = Float.parseFloat(this.yundan.huichezhongliang.getText().trim())*Float.parseFloat(this.yundan.huichesijidanjia.getText().trim());
+//			rec_vector.addElement(huicheyingfusijijine);
 			rec_vector.addElement(this.yundan.huicheshifouqingsuan.getSelectedItem().toString().trim());
 			this.yundan.huichehuodanV.addElement(rec_vector);
 			String str = this.yundan.huichehuowubianhao.getText();
@@ -135,6 +148,7 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 			this.yundan.huicheshifujine.setText("");
 			this.yundan.huichejiezhangbeizhu.setText("");
 			this.yundan.huichesijidanjia.setText("");
+			this.yundan.huichesijijine.setText("");
 			this.yundan.huicheshifouqingsuan.setSelectedItem("否");
 			this.yundan.huichehuodanTM.fireTableStructureChanged();
 		}

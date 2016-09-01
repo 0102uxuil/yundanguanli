@@ -72,6 +72,7 @@ public class YunDan extends JFrame {
 	JTextField chucheshouxufei, huicheshouxufei;
 	
 	JTextField chuchesijidanjia, huichesijidanjia;
+	JTextField chuchesijijine, huichesijijine;
 	
 	float chucheyingfuzonge, chucheshifuzonge, huicheyingfuzonge, huicheshifuzonge;
 	
@@ -318,11 +319,14 @@ public class YunDan extends JFrame {
         this.chuchesijidanjia = new JTextField(10);
         this.makeLabelAndTextField(this, "司机单价（元）：", this.chuchesijidanjia, gridbag, c, 2);
         
+        this.chuchesijijine = new JTextField(10);
+        this.makeLabelAndTextField(this, "司机金额（元）：", this.chuchesijijine, gridbag, c, 2);
+        
+        this.addpanelandchangeline(gridbag, c);
+        
         String[] str = {"否", "是"};
         this.chucheshifouqingsuan = new JComboBox(str);
         this.makeLabelAndComboBox(this, "　是否清算：", this.chucheshifouqingsuan, gridbag, c, 2);
-        
-        this.addpanelandchangeline(gridbag, c);
         
         JPanel cp;
         cp = new JPanel();
@@ -506,11 +510,14 @@ public class YunDan extends JFrame {
         this.huichesijidanjia = new JTextField(10);
         this.makeLabelAndTextField(this, "司机单价（元）：", this.huichesijidanjia, gridbag, c, 2);
         
+        this.huichesijijine = new JTextField(10);
+        this.makeLabelAndTextField(this, "司机金额（元）：", this.huichesijijine, gridbag, c, 2);
+        
+        this.addpanelandchangeline(gridbag, c);
+        
 //        String[] str = {"否", "是"};
         this.huicheshifouqingsuan = new JComboBox(str);
         this.makeLabelAndComboBox(this, "　　是否清算：", this.huicheshifouqingsuan, gridbag, c, 2);
-        
-        this.addpanelandchangeline(gridbag, c);
         
         JPanel hp;
         hp = new JPanel();
