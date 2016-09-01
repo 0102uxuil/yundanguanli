@@ -35,11 +35,11 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "货物编号不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(flag == 1){
 			JOptionPane.showMessageDialog(null, "货物编号不能重复！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.yundan.chuchehuoming.getText().trim().equals("") || this.yundan.chuchehuoming.getText().trim() == null){
+		} else if(this.yundan.chuchehuoming.getSelectedItem() == null || this.yundan.chuchehuoming.getSelectedItem().toString().trim().equals("")){
 			JOptionPane.showMessageDialog(null, "货名不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(this.yundan.chuchezhongliang.getText().trim().equals("") || this.yundan.chuchezhongliang.getText().trim() == null){
 			JOptionPane.showMessageDialog(null, "重量不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.yundan.chuchehuozhu.getSelectedItem().toString().trim().equals("") || this.yundan.chuchehuozhu.getSelectedItem().toString().trim() == null){
+		} else if(this.yundan.chuchehuozhu.getSelectedItem().toString().trim() == null || this.yundan.chuchehuozhu.getSelectedItem().toString().trim().equals("")){
 			JOptionPane.showMessageDialog(null, "货主不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(((this.yundan.chuchejiage.getText().trim().equals("") || this.yundan.chuchejiage.getText().trim() == null))
 				&& ((this.yundan.chuchebaodijia.getText().trim().equals("") || this.yundan.chuchebaodijia.getText().trim() == null))){
@@ -71,7 +71,7 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 		} else {
 			Vector rec_vector = new Vector();
 			rec_vector.addElement("0"+this.yundan.chuchehuowubianhao.getText().trim());
-			rec_vector.addElement(this.yundan.chuchehuoming.getText().trim());
+			rec_vector.addElement(this.yundan.chuchehuoming.getSelectedItem().toString().trim());
 			rec_vector.addElement(this.yundan.chuchezhongliang.getText().trim());
 			rec_vector.addElement(this.yundan.chuchezhongliang2.getText().trim());
 			rec_vector.addElement(this.yundan.chuchejiage.getText().trim());
@@ -138,7 +138,7 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			String str = this.yundan.chuchehuowubianhao.getText();
 			str = String.valueOf((Integer.parseInt(str)+1));
 			this.yundan.chuchehuowubianhao.setText(str);
-			this.yundan.chuchehuoming.setText("");
+			this.yundan.chuchehuoming.removeAllItems();
 			this.yundan.chuchezhongliang.setText("");
 			this.yundan.chuchezhongliang2.setText("");
 			this.yundan.chuchejiage.setText("");

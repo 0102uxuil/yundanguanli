@@ -35,11 +35,11 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "货物编号不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(flag == 1){
 			JOptionPane.showMessageDialog(null, "货物编号不能重复！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.yundan.huichehuoming.getText().trim().equals("") || this.yundan.huichehuoming.getText().trim() == null){
+		} else if(this.yundan.huichehuoming.getSelectedItem() == null || this.yundan.huichehuoming.getSelectedItem().toString().trim().equals("")){
 			JOptionPane.showMessageDialog(null, "货名不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(this.yundan.huichezhongliang.getText().trim().equals("") || this.yundan.huichezhongliang.getText().trim() == null){
 			JOptionPane.showMessageDialog(null, "重量不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.yundan.huichehuozhu.getSelectedItem().toString().trim().equals("") || this.yundan.huichehuozhu.getSelectedItem().toString().trim() == null){
+		} else if(this.yundan.huichehuozhu.getSelectedItem() == null || this.yundan.huichehuozhu.getSelectedItem().toString().trim().equals("")){
 			JOptionPane.showMessageDialog(null, "货主不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(((this.yundan.huichejiage.getText().trim().equals("") || this.yundan.huichejiage.getText().trim() == null))
 				&& ((this.yundan.huichebaodijia.getText().trim().equals("") || this.yundan.huichebaodijia.getText().trim() == null))){
@@ -69,7 +69,7 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 		} else {
 			Vector rec_vector = new Vector();
 			rec_vector.addElement("1"+this.yundan.huichehuowubianhao.getText().trim());
-			rec_vector.addElement(this.yundan.huichehuoming.getText().trim());
+			rec_vector.addElement(this.yundan.huichehuoming.getSelectedItem().toString().trim());
 			rec_vector.addElement(this.yundan.huichezhongliang.getText().trim());
 			rec_vector.addElement(this.yundan.huichezhongliang2.getText().trim());
 			rec_vector.addElement(this.yundan.huichejiage.getText().trim());
@@ -136,7 +136,7 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 			String str = this.yundan.huichehuowubianhao.getText();
 			str = String.valueOf((Integer.parseInt(str)+1));
 			this.yundan.huichehuowubianhao.setText(str);
-			this.yundan.huichehuoming.setText("");
+			this.yundan.huichehuoming.removeAllItems();
 			this.yundan.huichezhongliang.setText("");
 			this.yundan.huichezhongliang2.setText("");
 			this.yundan.huichejiage.setText("");

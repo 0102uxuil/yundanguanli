@@ -54,7 +54,9 @@ public class YunDan extends JFrame {
 	JComboBox huichechufadi, huichemudidi;
 	
 	JTextField chuchehuowubianhao,huichehuowubianhao;
-	JTextField chuchehuoming, huichehuoming;
+//	JTextField chuchehuoming, huichehuoming;
+	DBComboBoxModel chuchehuomingCBM, huichehuomingCBM;
+	JComboBox chuchehuoming, huichehuoming;
 	JTextField chuchezhongliang, huichezhongliang;
 	JTextField chuchezhongliang2, huichezhongliang2;
 	JTextField chuchejiage, huichejiage;
@@ -220,7 +222,8 @@ public class YunDan extends JFrame {
         this.makeLabelAndTextField(this, "　　　货物编号：", this.chuchehuowubianhao, gridbag, c, 2);
 //        this.chuchehuozhu = new JTextField(10);
 //        this.makeLabelAndTextField(this, "　　　　　货主：", this.chuchehuozhu, gridbag, c, 2);
-        this.chuchehuoming = new JTextField(10);
+        
+//        this.chuchehuoming = new JTextField(10);
         /*
         this.chuchehuozhu = new TextFieldWithComboBox(this.chuchehuoming){
 			@Override
@@ -287,8 +290,81 @@ public class YunDan extends JFrame {
         };
         this.makeLabelAndComboBox(this, "　　　　货主：", this.chuchehuozhu, gridbag, c, 2);
         this.chuchehuozhu.setEditable(false);
+        /*
+         * 添加监听
+         */
+        this.chuchehuozhu.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String sql = "select huoming, jiage, sijijiage from jiagebiao where "
+						+ " chufadi = " + "'" + YunDan.this.chuchechufadi.getSelectedItem() + "'"
+						+ "and mudidi = " + "'" + YunDan.this.chuchemudidi.getSelectedItem() + "'"
+						+ "and huozhu = " + "'" + YunDan.this.chuchehuozhu.getSelectedItem() + "'"
+//						+ "and huowu = " + "'" + YunDan.this.chuchehuoming.getSelectedIndex() + "'"
+						+ " ;";
+				System.out.println(sql);
+				try {
+					ResultSet rs;
+					rs = DBManager.getInstance().excuteQuery(sql);
+					YunDan.this.chuchehuoming.removeAllItems();
+					if(rs.next() == true){
+						YunDan.this.chuchehuoming.addItem(rs.getString("huoming"));
+						YunDan.this.chuchejiage.setText(String.valueOf(rs.getObject("jiage")));
+						YunDan.this.chuchesijidanjia.setText(String.valueOf(rs.getObject("sijijiage")));
+					}
+					while(rs.next()){
+						YunDan.this.chuchehuoming.addItem(rs.getString("huoming"));
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+        	
+        });
         
-        this.makeLabelAndTextField(this, "　　　　　货名：", this.chuchehuoming, gridbag, c, 2);
+        this.chuchehuomingCBM = new DBComboBoxModel(
+        		"select distinct huoming from jiagebiao"
+        		, "huoming");
+        this.chuchehuoming = new JComboBox(this.chuchehuomingCBM){
+            public Dimension getPreferredSize() {
+                return new Dimension(comboBoxSize.getPreferredSize().width, comboBoxSize.getPreferredSize().height);
+            }
+        };
+        this.makeLabelAndComboBox(this, "　　　　货名：", this.chuchehuoming, gridbag, c, 2);
+        this.chuchehuoming.setEditable(true);
+        this.chuchehuoming.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				String sql = "select jiage, sijijiage from jiagebiao where "
+						+ " chufadi = " + "'" + YunDan.this.chuchechufadi.getSelectedItem() + "'"
+						+ "and mudidi = " + "'" + YunDan.this.chuchemudidi.getSelectedItem() + "'"
+						+ "and huozhu = " + "'" + YunDan.this.chuchehuozhu.getSelectedItem() + "'";
+						if(YunDan.this.chuchehuoming.getSelectedItem() != null && !YunDan.this.chuchehuoming.getSelectedItem().toString().equals("")){
+							sql = sql + "and huoming = " + "'" + YunDan.this.chuchehuoming.getSelectedItem().toString() + "'";
+						}
+				sql = sql + " ;";
+				System.out.println(sql);
+				try {
+					ResultSet rs;
+					rs = DBManager.getInstance().excuteQuery(sql);
+					if(rs.next() == true){
+						YunDan.this.chuchejiage.setText(String.valueOf(rs.getObject("jiage")));
+						YunDan.this.chuchesijidanjia.setText(String.valueOf(rs.getObject("sijijiage")));
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+        	
+        });
+        
+//        this.makeLabelAndTextField(this, "　　　　　货名：", this.chuchehuoming, gridbag, c, 2);
         this.chuchezhongliang = new JTextField(10);
         this.makeLabelAndTextField(this, "　　重量（吨）：", this.chuchezhongliang, gridbag, c, 2);
         this.chuchezhongliang2 = new JTextField(10);
@@ -418,7 +494,7 @@ public class YunDan extends JFrame {
         this.makeLabelAndTextField(this, "　　　货物编号：", this.huichehuowubianhao, gridbag, c, 2);
 //        this.huichehuozhu = new JTextField(10);
 //        this.makeLabelAndTextField(this, "　　　　　货主：", this.huichehuozhu, gridbag, c, 2);
-        this.huichehuoming = new JTextField(10);
+//        this.huichehuoming = new JTextField(10);
         /*
         this.huichehuozhu = new TextFieldWithComboBox(this.huichehuoming){
 			@Override
@@ -478,8 +554,81 @@ public class YunDan extends JFrame {
         };
         this.makeLabelAndComboBox(this, "　　　　货主：", this.huichehuozhu, gridbag, c, 2);
         this.huichehuozhu.setEditable(false);
+        /*
+         * 添加监听
+         */
+        this.huichehuozhu.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String sql = "select huoming, jiage, sijijiage from jiagebiao where "
+						+ " chufadi = " + "'" + YunDan.this.huichechufadi.getSelectedItem() + "'"
+						+ "and mudidi = " + "'" + YunDan.this.huichemudidi.getSelectedItem() + "'"
+						+ "and huozhu = " + "'" + YunDan.this.huichehuozhu.getSelectedItem() + "'"
+//						+ "and huowu = " + "'" + YunDan.this.huichehuoming.getSelectedIndex() + "'"
+						+ " ;";
+				System.out.println(sql);
+				try {
+					ResultSet rs;
+					rs = DBManager.getInstance().excuteQuery(sql);
+					YunDan.this.huichehuoming.removeAllItems();
+					if(rs.next() == true){
+						YunDan.this.huichehuoming.addItem(rs.getString("huoming"));
+						YunDan.this.huichejiage.setText(String.valueOf(rs.getObject("jiage")));
+						YunDan.this.huichesijidanjia.setText(String.valueOf(rs.getObject("sijijiage")));
+					}
+					while(rs.next()){
+						YunDan.this.huichehuoming.addItem(rs.getString("huoming"));
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+        	
+        });
         
-        this.makeLabelAndTextField(this, "　　　　　货名：", this.huichehuoming, gridbag, c, 2);
+        this.huichehuomingCBM = new DBComboBoxModel(
+        		"select distinct huoming from jiagebiao"
+        		, "huoming");
+        this.huichehuoming = new JComboBox(this.huichehuomingCBM){
+            public Dimension getPreferredSize() {
+                return new Dimension(comboBoxSize.getPreferredSize().width, comboBoxSize.getPreferredSize().height);
+            }
+        };
+        this.makeLabelAndComboBox(this, "　　　　货名：", this.huichehuoming, gridbag, c, 2);
+        this.huichehuoming.setEditable(true);
+        this.huichehuoming.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				String sql = "select jiage, sijijiage from jiagebiao where "
+						+ " chufadi = " + "'" + YunDan.this.huichechufadi.getSelectedItem() + "'"
+						+ "and mudidi = " + "'" + YunDan.this.huichemudidi.getSelectedItem() + "'"
+						+ "and huozhu = " + "'" + YunDan.this.huichehuozhu.getSelectedItem() + "'";
+						if(YunDan.this.huichehuoming.getSelectedItem() != null && !YunDan.this.huichehuoming.getSelectedItem().toString().equals("")){
+							sql = sql + "and huoming = " + "'" + YunDan.this.huichehuoming.getSelectedItem().toString() + "'";
+						}
+				sql = sql + " ;";
+				System.out.println(sql);
+				try {
+					ResultSet rs;
+					rs = DBManager.getInstance().excuteQuery(sql);
+					if(rs.next() == true){
+						YunDan.this.huichejiage.setText(String.valueOf(rs.getObject("jiage")));
+						YunDan.this.huichesijidanjia.setText(String.valueOf(rs.getObject("sijijiage")));
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+        	
+        });
+        
+//        this.makeLabelAndTextField(this, "　　　　　货名：", this.huichehuoming, gridbag, c, 2);
         this.huichezhongliang = new JTextField(10);
         this.makeLabelAndTextField(this, "　　重量（吨）：", this.huichezhongliang, gridbag, c, 2);
         this.huichezhongliang2 = new JTextField(10);
