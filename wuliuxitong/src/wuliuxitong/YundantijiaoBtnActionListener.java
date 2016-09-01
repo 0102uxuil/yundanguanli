@@ -33,13 +33,13 @@ public class YundantijiaoBtnActionListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "出车日期不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
 			} else if(this.yundan.huicheriqi.getText().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "回车日期不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
-			} else if(this.yundan.chuchechufadi.getSelectedItem().toString().trim().equals("")) {
+			} else if(this.yundan.chuchechufadi.getSelectedItem() == null || this.yundan.chuchechufadi.getSelectedItem().toString().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "出车出发地不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
-			} else if(this.yundan.chuchemudidi.getSelectedItem().toString().trim().equals("")) {
+			} else if(this.yundan.chuchemudidi.getSelectedItem() == null || this.yundan.chuchemudidi.getSelectedItem().toString().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "出车目的地不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
-			} else if(this.yundan.huichechufadi.getSelectedItem().toString().trim().equals("")) {
+			} else if(this.yundan.huichechufadi.getSelectedItem() == null || this.yundan.huichechufadi.getSelectedItem().toString().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "回车出发地不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
-			} else if(this.yundan.huichemudidi.getSelectedItem().toString().trim().equals("")) {
+			} else if(this.yundan.huichemudidi.getSelectedItem() == null || this.yundan.huichemudidi.getSelectedItem().toString().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "回车目的地不能为空！", "输入错误", JOptionPane.PLAIN_MESSAGE);
 			} else {
 				String sql_kaixiaodan;
