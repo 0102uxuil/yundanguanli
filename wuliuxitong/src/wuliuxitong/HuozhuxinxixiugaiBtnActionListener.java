@@ -16,8 +16,8 @@ public class HuozhuxinxixiugaiBtnActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(this.hzxxp.huozhuxinxiTb.getSelectedRow() == -1
-				|| this.hzxxp.huozhuxinxiTb.convertRowIndexToModel(this.hzxxp.huozhuxinxiTb.getSelectedRow()) == (this.hzxxp.huozhuxinxiTb.getRowCount()-1)){
+		if(this.hzxxp.huozhuxinxiTb.getSelectedRow() == -1){
+//				|| this.hzxxp.huozhuxinxiTb.convertRowIndexToModel(this.hzxxp.huozhuxinxiTb.getSelectedRow()) == (this.hzxxp.huozhuxinxiTb.getRowCount()-1)){
 			JOptionPane.showMessageDialog(null, "请选中要修改的货主信息！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else {
 			new HuoZhuXinXiDan(this.hzxxp.huozhuxinxiModel.getValueAt(this.hzxxp.huozhuxinxiTb.convertRowIndexToModel(this.hzxxp.huozhuxinxiTb.getSelectedRow()), 1).toString()

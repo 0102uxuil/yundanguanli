@@ -39,6 +39,8 @@ public class TreeListener implements TreeSelectionListener {
 			zhujiemian.card.show(zhujiemian.panel, "gongzi");
 		} else if(name.equals("货主信息")){
 			zhujiemian.card.show(zhujiemian.panel, "huozhuxinxi");
+		} else if(name.equals("价格表")){
+			zhujiemian.card.show(zhujiemian.panel, "jiagebiao");
 		}
 	}
 

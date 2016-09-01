@@ -118,6 +118,7 @@ public class Zhujiemian extends JFrame {
 		yundanguanli.add(new DefaultMutableTreeNode("车辆信息"));
 		yundanguanli.add(new DefaultMutableTreeNode("工资结算"));
 		yundanguanli.add(new DefaultMutableTreeNode("货主信息"));
+		yundanguanli.add(new DefaultMutableTreeNode("价格表"));
 		this.tree = new JTree(yundanguanli);
 //		this.tree.setBounds(0, 0, 100, (int)this.frameSize.getHeight());
 //		this.add(tree);
@@ -139,6 +140,7 @@ public class Zhujiemian extends JFrame {
 		initcheliangxinxiPanel();
 		initgongziPanel();
 		inithuozhuxinxiPanel();
+		initjiagebiaoPanel();
 //		this.add(panel);
 	}
 	
@@ -180,6 +182,10 @@ public class Zhujiemian extends JFrame {
 	
 	private void inithuozhuxinxiPanel(){
 		this.panel.add("huozhuxinxi", new HuozhuxinxiPanel());
+	}
+	
+	private void initjiagebiaoPanel(){
+		this.panel.add("jiagebiao", new JiagebiaoPanel());
 	}
 	
 }
