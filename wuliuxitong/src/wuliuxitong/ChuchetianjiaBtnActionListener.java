@@ -64,6 +64,8 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "实付金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if((this.yundan.chuchesijidanjia.getText().trim() == null || this.yundan.chuchesijidanjia.getText().trim().equals("")) && (this.yundan.chuchesijijine.getText().trim() == null || this.yundan.chuchesijijine.getText().trim().equals(""))){
 			JOptionPane.showMessageDialog(null, "司机单价司机金额不能同时为空！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if((this.yundan.chuchesijidanjia.getText().trim() != null && !this.yundan.chuchesijidanjia.getText().trim().equals("")) && (this.yundan.chuchesijijine.getText().trim() != null && !this.yundan.chuchesijijine.getText().trim().equals(""))){
+			JOptionPane.showMessageDialog(null, "司机单价司机金额只能填一个！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.chuchesijidanjia.getText().trim().equals("") && this.yundan.chuchesijidanjia.getText().trim() != null && !this.yundan.chuchesijidanjia.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "司机单价必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.chuchesijijine.getText().trim().equals("") && this.yundan.chuchesijijine.getText().trim() != null && !this.yundan.chuchesijijine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){

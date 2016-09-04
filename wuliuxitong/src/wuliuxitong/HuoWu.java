@@ -24,7 +24,7 @@ public class HuoWu extends JFrame {
 	JTextField huowubianhao,
 			   huoming, zhongliang, zhongliang2, jiage, baodijia, 
 			   qitafeiyong, beizhu, shouxufei,
-			   huozhu, shifujine, jiezhangbeizhu, sijijiage;
+			   huozhu, shifujine, jiezhangbeizhu, sijijiage, sijijine;
 	
 	DBComboBoxModel huozhuCBM;
 	JComboBox huozhuCB;
@@ -68,7 +68,9 @@ public class HuoWu extends JFrame {
         this.shouxufei = new JTextField(10);
         this.makeLabelAndTextField(this, "　　　　手续费：", this.shouxufei, gridbag, c, 2);
         this.sijijiage = new JTextField(10);
-        this.makeLabelAndTextField(this, "司机价格（元）：", this.sijijiage, gridbag, c, 2);
+        this.makeLabelAndTextField(this, "司机单价（元）：", this.sijijiage, gridbag, c, 2);
+        this.sijijine = new JTextField(10);
+        this.makeLabelAndTextField(this, "司机金额（元）：", this.sijijine, gridbag, c, 2);
         this.addpanelandchangeline(gridbag, c);
         
 //        this.huozhu = new JTextField(10);
@@ -181,6 +183,7 @@ public class HuoWu extends JFrame {
 		this.shifujine.setText((String)tm.getValueAt(selectedRow, 11));
 		this.jiezhangbeizhu.setText((String)tm.getValueAt(selectedRow, 12));
 		this.sijijiage.setText(String.valueOf(tm.getValueAt(selectedRow, 13)));
+		this.sijijine.setText(String.valueOf(tm.getValueAt(selectedRow, 14)));
 		if(tm.getValueAt(selectedRow, 15).toString().equals("是")){
 			this.shifouqingsuan.setSelectedItem("是");
 		}

@@ -45,10 +45,14 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			JOptionPane.showMessageDialog(this.huowu, "手续费必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.huowu.shifujine.getText().trim().equals("") && this.huowu.shifujine.getText().trim() != null && !this.huowu.shifujine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(this.huowu, "实付金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(this.huowu.sijijiage.getText().trim() == null || this.huowu.sijijiage.getText().trim().equals("")){
-			JOptionPane.showMessageDialog(null, "司机单价不能为空！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(!this.huowu.sijijiage.getText().trim().equals("") && this.huowu.sijijiage.getText().trim() != null && !this.huowu.sijijiage.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+		} else if((this.huowu.sijijiage.getText().trim() == null || this.huowu.sijijiage.getText().trim().equals("")) && (this.huowu.sijijine.getText().trim() == null || this.huowu.sijijine.getText().trim().equals(""))){
+			JOptionPane.showMessageDialog(null, "司机单价司机金额不能同时为空！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if((this.huowu.sijijiage.getText().trim() != null && !this.huowu.sijijiage.getText().trim().equals("")) && (this.huowu.sijijine.getText().trim() != null && !this.huowu.sijijine.getText().trim().equals(""))){
+			JOptionPane.showMessageDialog(null, "司机单价司机金额只能填一个！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(this.huowu.sijijiage.getText().trim() != null && !this.huowu.sijijiage.getText().trim().equals("") && !this.huowu.sijijiage.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "司机单价必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(this.huowu.sijijine.getText().trim() != null && !this.huowu.sijijine.getText().trim().equals("") && !this.huowu.sijijine.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+			JOptionPane.showMessageDialog(null, "司机金额必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else {
 			this.huowu.tm.setValueAt(this.huowu.huoming.getText().trim(), this.huowu.selectedRow, 1);
 			this.huowu.tm.setValueAt(this.huowu.zhongliang.getText().trim(), this.huowu.selectedRow, 2);
@@ -86,10 +90,17 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			this.huowu.tm.setValueAt(yingfujine, this.huowu.selectedRow, 10);
 			this.huowu.tm.setValueAt(this.huowu.shifujine.getText().trim(), this.huowu.selectedRow, 11);
 			this.huowu.tm.setValueAt(this.huowu.jiezhangbeizhu.getText().trim(), this.huowu.selectedRow, 12);
-			this.huowu.tm.setValueAt(this.huowu.sijijiage.getText().trim(), this.huowu.selectedRow, 13);
-			float yingfusijijine;
-			yingfusijijine = Float.parseFloat(this.huowu.zhongliang.getText().trim())*Float.parseFloat(this.huowu.sijijiage.getText().trim());
-			this.huowu.tm.setValueAt(yingfusijijine, this.huowu.selectedRow, 14);
+			if(this.huowu.sijijiage.getText().trim() != null && !this.huowu.sijijiage.getText().trim().equals("")){
+				float yingfusijijine;
+				this.huowu.tm.setValueAt(this.huowu.sijijiage.getText().trim(), this.huowu.selectedRow, 13);
+				yingfusijijine = Float.parseFloat(this.huowu.zhongliang.getText().trim())*Float.parseFloat(this.huowu.sijijiage.getText().trim());
+				this.huowu.tm.setValueAt(yingfusijijine, this.huowu.selectedRow, 14);
+			} else {
+				float sijidanjia;
+				sijidanjia = Float.parseFloat(this.huowu.sijijine.getText().trim())/Float.parseFloat(this.huowu.zhongliang.getText().trim());
+				this.huowu.tm.setValueAt(sijidanjia, this.huowu.selectedRow, 13);
+				this.huowu.tm.setValueAt(this.huowu.sijijine.getText().trim(), this.huowu.selectedRow, 14);
+			}
 			this.huowu.tm.setValueAt(this.huowu.shifouqingsuan.getSelectedItem().toString(), this.huowu.selectedRow, 15);
 			
 			this.huowu.dispose();

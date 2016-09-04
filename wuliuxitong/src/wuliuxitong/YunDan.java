@@ -442,7 +442,7 @@ public class YunDan extends JFrame {
 				"实付金额",
 				"结账备注",
 				"司机单价",
-				"应付司机金额",
+				"司机金额",
 				"是否清算"};
 		
 		this.chuchehuodanV = new Vector();
@@ -839,6 +839,7 @@ public class YunDan extends JFrame {
         this.setVisible(true);
         this.pack();
         this.setLocation((screenSize.width-this.getSize().width)/2, (screenSize.height-this.getSize().height)/2);
+        this.setResizable(false);
         
         if(option == YunDan.YunDanTianjia){
         	this.initYundanbianhao();
