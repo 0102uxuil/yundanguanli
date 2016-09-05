@@ -47,9 +47,9 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 		} else if(!((this.yundan.chuchejiage.getText().trim().equals("") || this.yundan.chuchejiage.getText().trim() == null))
 				&& !((this.yundan.chuchebaodijia.getText().trim().equals("") || this.yundan.chuchebaodijia.getText().trim() == null))){
 			JOptionPane.showMessageDialog(null, "价格和保底价只能有一个！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(!this.yundan.chuchezhongliang.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
+		} else if(!this.yundan.chuchezhongliang.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$") || Float.parseFloat(this.yundan.chuchezhongliang.getText().trim()) == 0){
 			System.out.println(this.yundan.chuchezhongliang.getText().trim());
-			JOptionPane.showMessageDialog(null, "重量必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "重量必须为大于0的正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.chuchezhongliang2.getText().trim().equals("") && this.yundan.chuchezhongliang2.getText().trim() != null && !this.yundan.chuchezhongliang2.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(null, "重量2必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.yundan.chuchejiage.getText().trim().equals("") && this.yundan.chuchejiage.getText().trim() != null && !this.yundan.chuchejiage.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){

@@ -31,8 +31,8 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 		} else if(!((this.huowu.jiage.getText().trim().equals("") || this.huowu.jiage.getText().trim() == null))
 				&& !((this.huowu.baodijia.getText().trim().equals("") || this.huowu.baodijia.getText().trim() == null))){
 			JOptionPane.showMessageDialog(this.huowu, "价格和保底价只能有一个！", "错误", JOptionPane.PLAIN_MESSAGE);
-		} else if(!this.huowu.zhongliang.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
-			JOptionPane.showMessageDialog(this.huowu, "重量必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
+		} else if(!this.huowu.zhongliang.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$") || Float.parseFloat(this.huowu.zhongliang.getText().trim()) == 0){
+			JOptionPane.showMessageDialog(this.huowu, "重量必须为大于0的正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.huowu.zhongliang2.getText().trim().equals("") && this.huowu.zhongliang2.getText().trim() != null && !this.huowu.zhongliang2.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
 			JOptionPane.showMessageDialog(this.huowu, "重量2必须为正数！", "错误", JOptionPane.PLAIN_MESSAGE);
 		} else if(!this.huowu.jiage.getText().trim().equals("") && this.huowu.jiage.getText().trim() != null && !this.huowu.jiage.getText().trim().matches("^([1-9][0-9]*[.][0-9]*|0[.][0-9]+|[1-9][0-9]*|0)$")){
