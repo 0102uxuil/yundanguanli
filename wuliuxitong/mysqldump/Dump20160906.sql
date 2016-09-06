@@ -43,7 +43,7 @@ CREATE TABLE `huowudan` (
   `riqi` date NOT NULL,
   `chufadi` varchar(10) NOT NULL,
   `mudidi` varchar(10) NOT NULL,
-  `huozhu` varchar(10) NOT NULL,
+  `huozhu` varchar(30) NOT NULL,
   `huoming` varchar(10) NOT NULL,
   `zhongliang` float(10,2) NOT NULL,
   `zhongliang2` float(10,2) DEFAULT NULL,
@@ -242,4 +242,4 @@ CREATE TABLE `yuekaixiaodan` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-01 20:52:12
+-- Dump completed on 2016-09-06 17:29:51
