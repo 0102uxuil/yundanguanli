@@ -114,7 +114,8 @@ public class YuekaixiaoPanel extends JPanel {
 				"日期",
 				"粤通卡",
 				"电话费",
-				"其他费用",
+//				"其他费用",
+				"停车费",
 				"备注",
 				"总开销"};
 		

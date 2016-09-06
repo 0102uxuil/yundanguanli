@@ -74,7 +74,7 @@ public class YueKaiXiaoDan extends JFrame {
         this.addpanelandchangeline(gridbag, c);
         
         this.qitafeiyong = new JTextField(10);
-        this.makeLabelAndTextField(this, "其他费用（元）：", this.qitafeiyong, gridbag, c, 2);
+        this.makeLabelAndTextField(this, "　停车费（元）：", this.qitafeiyong, gridbag, c, 2);//其他费用改成停车费
         this.beizhu = new JTextField(10);
         this.makeLabelAndTextField(this, "　　　　　备注：", this.beizhu, gridbag, c, 2);
         this.addpanelandchangeline(gridbag, c);

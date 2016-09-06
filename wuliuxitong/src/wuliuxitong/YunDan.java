@@ -763,7 +763,8 @@ public class YunDan extends JFrame {
 		this.addpanelandchangeline(gridbag, c);
 		
 		this.qitafeiyong = new JTextField(10);
-		this.makeLabelAndTextField(this, "　其他费用（元）：", this.qitafeiyong, gridbag, c, 2);
+//		this.makeLabelAndTextField(this, "　其他费用（元）：", this.qitafeiyong, gridbag, c, 2);
+		this.makeLabelAndTextField(this, "　　　低速（元）：", this.qitafeiyong, gridbag, c, 2);
 		this.beizhu = new JTextField(10);
 		this.makeLabelAndTextField(this, "　　　　　　备注：", this.beizhu, gridbag, c, 3);
 //		this.addpanelandchangeline(gridbag, c);
