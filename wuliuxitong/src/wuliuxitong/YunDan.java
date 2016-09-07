@@ -986,7 +986,7 @@ public class YunDan extends JFrame {
 			this.beizhu.setText(rs.getString("beizhu"));
 			
 			String sql_chuchehuodan;
-			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, sijijiage, shifouqingsuan"
+			sql_chuchehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, sijijiage, sijijiagejine, shifouqingsuan"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 					+ " and huowubianhao like '0%' " + ";";
@@ -1042,9 +1042,10 @@ public class YunDan extends JFrame {
 				rec_vector.addElement(rsc.getString("shifujine"));
 				rec_vector.addElement(rsc.getString("jiezhangbeizhu"));
 				rec_vector.addElement(rsc.getString("sijijiage"));
-				float yingfusijijine;
-				yingfusijijine = rsc.getFloat("zhongliang")*rsc.getFloat("sijijiage");
-				rec_vector.addElement(yingfusijijine);
+//				float yingfusijijine;
+//				yingfusijijine = rsc.getFloat("zhongliang")*rsc.getFloat("sijijiage");
+//				rec_vector.addElement(yingfusijijine);
+				rec_vector.addElement(rsc.getString("sijijiagejine"));
 				if(rsc.getString("shifouqingsuan").equals("yes")){
 					rec_vector.addElement("ÊÇ");
 				} else {
@@ -1055,7 +1056,7 @@ public class YunDan extends JFrame {
 			this.huichehuodanTM.fireTableStructureChanged();
 			
 			String sql_huichehuodan;
-			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, sijijiage, shifouqingsuan"
+			sql_huichehuodan = "select huowubianhao, huoming, zhongliang, zhongliang2, jiage, baodijia, huozhu, qitafeiyong, beizhu, shouxufei, shifujine, jiezhangbeizhu, sijijiage, sijijiagejine, shifouqingsuan"
 					+ " from huowudan"
 					+ " where yundanbianhao = " + "'" + rs.getString("yundanbianhao") + "'"
 //					+ " and biaoji = '0' " + ";";
@@ -1111,9 +1112,10 @@ public class YunDan extends JFrame {
 				rec_vector.addElement(rsh.getString("shifujine"));
 				rec_vector.addElement(rsh.getString("jiezhangbeizhu"));
 				rec_vector.addElement(rsh.getString("sijijiage"));
-				float yingfusijijine;
-				yingfusijijine = rsh.getFloat("zhongliang")*rsh.getFloat("sijijiage");
-				rec_vector.addElement(yingfusijijine);
+//				float yingfusijijine;
+//				yingfusijijine = rsh.getFloat("zhongliang")*rsh.getFloat("sijijiage");
+//				rec_vector.addElement(yingfusijijine);
+				rec_vector.addElement(rsh.getString("sijijiagejine"));
 				if(rsh.getString("shifouqingsuan").equals("yes")){
 					rec_vector.addElement("ÊÇ");
 				} else {
