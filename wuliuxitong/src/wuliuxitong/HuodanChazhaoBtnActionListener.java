@@ -29,7 +29,7 @@ public class HuodanChazhaoBtnActionListener implements ActionListener {
 		sql = "select yundanbianhao, huowubianhao, huowudan.chepaihao, riqi, chufadi, mudidi, huozhu, huoming, zhongliang, zhongliang2, jiage, baodijia, qitafeiyong, beizhu, shouxufei, yingfujine, shifujine, jiezhangbeizhu, shifouqingsuan from huowudan left join cheliangxinxi on huowudan.chepaihao=cheliangxinxi.chepaihao where "
 		+ "riqi >= " + "'" + this.huodanPanel.chuche_start.getText().trim() + "'" + " and " + "riqi <=" + "'" + this.huodanPanel.chuche_end.getText().trim() + "'";
 		if(!this.huodanPanel.chepaihao_text.getText().trim().equals("")){
-			sql = sql + " and " + "chepaihao like " + "'%" + this.huodanPanel.chepaihao_text.getText().trim() + "%'";
+			sql = sql + " and " + "huowudan.chepaihao like " + "'%" + this.huodanPanel.chepaihao_text.getText().trim() + "%'";
 		}
 		if(!this.huodanPanel.chufadi_text.getText().trim().equals("")){
 //			sql = sql + " and " + "chufadi = " + "'" + this.huodanPanel.chufadi_text.getText().trim() + "'";

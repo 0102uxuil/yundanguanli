@@ -9,7 +9,7 @@ import java.util.Vector;
 public class LirunjisuanBtnActionListener implements ActionListener {
 
 	LirunPanel lirunPanel;
-	float lirunYuqi, lirunYide;
+	float lirunYuqi, lirunYide,lirunSiji;
 	float lirunYuqiDetail, lirunYideDetail;
 	
 	LirunjisuanBtnActionListener(LirunPanel lrp){
@@ -205,6 +205,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		
 		this.lirunYuqi += yuqizonglirun;
 		this.lirunYide += yidezonglirun;
+		this.lirunSiji += sijizonglirun;
 	}
 	
 	private String inityundansql(){
@@ -289,6 +290,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		
 		this.lirunYuqi -= zongkaixiaoheji;
 		this.lirunYide -= zongkaixiaoheji;
+		this.lirunSiji -= zongkaixiaoheji;
 	}
 	
 	private String inityuekaixiaosql(){
@@ -397,6 +399,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		
 		this.lirunYuqi -= zongkaixiaoheji;
 		this.lirunYide -= zongkaixiaoheji;
+		this.lirunSiji -= zongkaixiaoheji;
 	}
 	
 	private String initniankaixiaosql(){
@@ -468,6 +471,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		
 		this.lirunYuqi -= weixiujineheji;
 		this.lirunYide -= weixiujineheji;
+		this.lirunSiji -= weixiujineheji;
 	}
 	
 	private String initweixiukaixiaosql(){
@@ -484,7 +488,7 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 	
 	private void appendVectorForHeji(Vector vector){
 		Vector head_vector=new Vector();
-		for(int i=1; i<=10; i++){
+		for(int i=1; i<=8; i++){
 			head_vector.addElement(null);
 		}
 		head_vector.addElement("总　计：");
@@ -494,6 +498,9 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		head_vector.addElement("已得利润：");
 		this.lirunYide = (float)(Math.round(this.lirunYide*100))/100;
 		head_vector.addElement(this.lirunYide);
+		head_vector.addElement("司机利润：");
+		this.lirunSiji = (float)(Math.round(this.lirunSiji*100))/100;
+		head_vector.addElement(this.lirunSiji);
 		
 		vector.addElement(head_vector);
 	}
