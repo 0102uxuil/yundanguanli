@@ -37,6 +37,8 @@ public class LirunPanel extends JPanel {
 	VSTableModel lirunDetailModel;
 	Vector detailvector;
 	
+	String startDate, endDate, chepaihao_str;
+	
 	LirunPanel(){
 		super();
 		init();

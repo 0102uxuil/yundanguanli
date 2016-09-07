@@ -27,6 +27,10 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 //		sql_yuekaixiao = inityuekaixiaosql();
 //		sql_niankaixiao = initniankaixiaosql();
 		try {
+			this.lirunPanel.startDate = this.lirunPanel.riqi_start.getDate();
+//			System.out.println(this.lirunPanel.startDate);
+			this.lirunPanel.endDate = this.lirunPanel.riqi_end.getMonthEndDate();
+			this.lirunPanel.chepaihao_str = this.lirunPanel.chepaihao.getText().trim();
 			this.generateYunDanVector(this.lirunPanel.vector);
 			this.appendVectorForBlank(this.lirunPanel.vector);
 			this.appendVectorForYuekaixiao(this.lirunPanel.vector);
@@ -39,17 +43,16 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 			this.lirunPanel.lirunModel.resetVector(this.lirunPanel.vector);
 			this.lirunPanel.lirunModel.fireTableStructureChanged();
 			//detailvector
-			this.generateYunDanVectorDetail(this.lirunPanel.detailvector);
-			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
-			this.appendVectorForYuekaixiaoDetail(this.lirunPanel.detailvector);
-			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
-			this.appendVectorForNiankaixiaoDetail(this.lirunPanel.detailvector);
-			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
-			this.appendVectorForWeixiukaixiaoDetail(this.lirunPanel.detailvector);
-			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
-			this.appendVectorForHejiDetail(this.lirunPanel.detailvector);
-			this.lirunPanel.lirunDetailModel.resetVector(this.lirunPanel.detailvector);
-//			this.lirunPanel.lirunDetailModel.fireTableStructureChanged();
+//			this.generateYunDanVectorDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForYuekaixiaoDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForNiankaixiaoDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForWeixiukaixiaoDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForBlankDetail(this.lirunPanel.detailvector);
+//			this.appendVectorForHejiDetail(this.lirunPanel.detailvector);
+//			this.lirunPanel.lirunDetailModel.resetVector(this.lirunPanel.detailvector);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
