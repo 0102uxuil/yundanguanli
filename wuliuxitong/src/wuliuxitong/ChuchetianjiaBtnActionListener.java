@@ -126,11 +126,11 @@ public class ChuchetianjiaBtnActionListener implements ActionListener {
 			if(this.yundan.chuchesijidanjia.getText().trim() != null && !this.yundan.chuchesijidanjia.getText().trim().equals("")){
 				rec_vector.addElement(this.yundan.chuchesijidanjia.getText().trim());
 				float chucheyingfusijijine;
-				chucheyingfusijijine = Float.parseFloat(this.yundan.chuchezhongliang.getText().trim())*Float.parseFloat(this.yundan.chuchesijidanjia.getText().trim());
+				chucheyingfusijijine = Float.parseFloat(this.yundan.chuchezhongliang.getText().trim())*Float.parseFloat(this.yundan.chuchesijidanjia.getText().trim()) + chucheqitafeiyong - chucheshouxufei;
 				rec_vector.addElement(chucheyingfusijijine);
 			} else {
 				float chuchesijijiage;
-				chuchesijijiage = Float.parseFloat(this.yundan.chuchesijijine.getText().trim())/Float.parseFloat(this.yundan.chuchezhongliang.getText().trim());
+				chuchesijijiage = (Float.parseFloat(this.yundan.chuchesijijine.getText().trim()) - chucheqitafeiyong + chucheshouxufei)/Float.parseFloat(this.yundan.chuchezhongliang.getText().trim());
 				rec_vector.addElement(chuchesijijiage);
 				rec_vector.addElement(this.yundan.chuchesijijine.getText().trim());
 			}

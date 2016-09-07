@@ -93,11 +93,11 @@ public class HuoWuquedingBtnActionListener implements ActionListener {
 			if(this.huowu.sijijiage.getText().trim() != null && !this.huowu.sijijiage.getText().trim().equals("")){
 				float yingfusijijine;
 				this.huowu.tm.setValueAt(this.huowu.sijijiage.getText().trim(), this.huowu.selectedRow, 13);
-				yingfusijijine = Float.parseFloat(this.huowu.zhongliang.getText().trim())*Float.parseFloat(this.huowu.sijijiage.getText().trim());
+				yingfusijijine = Float.parseFloat(this.huowu.zhongliang.getText().trim())*Float.parseFloat(this.huowu.sijijiage.getText().trim()) + qitafeiyong - shouxufei;
 				this.huowu.tm.setValueAt(yingfusijijine, this.huowu.selectedRow, 14);
 			} else {
 				float sijidanjia;
-				sijidanjia = Float.parseFloat(this.huowu.sijijine.getText().trim())/Float.parseFloat(this.huowu.zhongliang.getText().trim());
+				sijidanjia = (Float.parseFloat(this.huowu.sijijine.getText().trim()) - qitafeiyong + shouxufei)/Float.parseFloat(this.huowu.zhongliang.getText().trim());
 				this.huowu.tm.setValueAt(sijidanjia, this.huowu.selectedRow, 13);
 				this.huowu.tm.setValueAt(this.huowu.sijijine.getText().trim(), this.huowu.selectedRow, 14);
 			}

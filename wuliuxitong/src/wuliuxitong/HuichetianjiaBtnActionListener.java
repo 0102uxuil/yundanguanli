@@ -119,11 +119,11 @@ public class HuichetianjiaBtnActionListener implements ActionListener {
 			if(this.yundan.huichesijidanjia.getText().trim() != null && !this.yundan.huichesijidanjia.getText().trim().equals("")){
 				rec_vector.addElement(this.yundan.huichesijidanjia.getText().trim());
 				float huicheyingfusijijine;
-				huicheyingfusijijine = Float.parseFloat(this.yundan.huichezhongliang.getText().trim())*Float.parseFloat(this.yundan.huichesijidanjia.getText().trim());
+				huicheyingfusijijine = Float.parseFloat(this.yundan.huichezhongliang.getText().trim())*Float.parseFloat(this.yundan.huichesijidanjia.getText().trim()) + huicheqitafeiyong - huicheshouxufei;
 				rec_vector.addElement(huicheyingfusijijine);
 			} else {
 				float huichesijijiage;
-				huichesijijiage = Float.parseFloat(this.yundan.huichesijijine.getText().trim())/Float.parseFloat(this.yundan.huichezhongliang.getText().trim());
+				huichesijijiage = (Float.parseFloat(this.yundan.huichesijijine.getText().trim()) - huicheqitafeiyong + huicheshouxufei)/Float.parseFloat(this.yundan.huichezhongliang.getText().trim());
 				rec_vector.addElement(huichesijijiage);
 				rec_vector.addElement(this.yundan.huichesijijine.getText().trim());
 			}
