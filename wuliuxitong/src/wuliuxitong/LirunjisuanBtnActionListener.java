@@ -23,14 +23,16 @@ public class LirunjisuanBtnActionListener implements ActionListener {
 		this.lirunYide = 0;
 		this.lirunYideDetail = 0;
 		this.lirunYuqiDetail = 0;
+		this.lirunSiji = 0;
 //		String sql_yundan, sql_yuekaixiao, sql_niankaixiao;
 //		sql_yuekaixiao = inityuekaixiaosql();
 //		sql_niankaixiao = initniankaixiaosql();
 		try {
 			this.lirunPanel.startDate = this.lirunPanel.riqi_start.getDate();
-//			System.out.println(this.lirunPanel.startDate);
+			System.out.println(this.lirunPanel.startDate);
 			this.lirunPanel.endDate = this.lirunPanel.riqi_end.getMonthEndDate();
 			this.lirunPanel.chepaihao_str = this.lirunPanel.chepaihao.getText().trim();
+			System.out.println("ljsBtn:" + this.lirunPanel.chepaihao_str);
 			this.generateYunDanVector(this.lirunPanel.vector);
 			this.appendVectorForBlank(this.lirunPanel.vector);
 			this.appendVectorForYuekaixiao(this.lirunPanel.vector);

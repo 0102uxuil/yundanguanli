@@ -32,6 +32,8 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 		this.startDate = lrp.startDate;
 		this.endDate = lrp.endDate;
 		this.chepaihao = lrp.chepaihao_str;
+//		System.out.println("ex" + this.lirunPanel.chepaihao_str);
+//		System.out.println("ex" + this.chepaihao);
 	}
 	
 	@Override
@@ -105,6 +107,7 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 	private void exportExcel(String absolutepath_without_postfix){
 		wb = new HSSFWorkbook();
 		Sheet sheet = wb.createSheet("ÀûÈóµ¥");
+		System.out.println("exp:" + this.lirunPanel.chepaihao_str);
 		this.zongmaoli = exceladdyundantable(sheet, this.lirunPanel.startDate, this.lirunPanel.endDate, this.lirunPanel.chepaihao_str);
 		this.zongyuekaixiao = exceladdyuekaixiao(sheet, this.lirunPanel.startDate, this.lirunPanel.endDate, this.lirunPanel.chepaihao_str);
 		this.zongniankaixiao = exceladdniankaixiao(sheet, this.lirunPanel.riqi_start.getYear() + "-01-01", this.lirunPanel.riqi_end.getYear() + "-12-31", this.lirunPanel.chepaihao_str);
@@ -355,11 +358,11 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 		String sql = "select yundanbianhao from kaixiaodan where "
 				+ "chucheriqi >= " + "'" + startDate + "'" 
 				+ " and " + "chucheriqi <=" + "'" + endDate + "'";
-		if(this.chepaihao !=null && !this.chepaihao.equals("")){
+		if(chepaihao !=null && !chepaihao.equals("")){
 			sql = sql + " and " + "chepaihao like " + "'%" + chepaihao + "%'";
 		}
 		sql = sql + " order by chucheriqi asc;";
-//		System.out.println(sql);
+		System.out.println(sql);
 		try {
 			ResultSet rs = DBManager.getInstance().excuteQuery(sql);
 			int count =1;
@@ -399,7 +402,7 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 		String sql = "select chepaihao, riqi, yuetongka, dianhuafei, qitafeiyong, beizhu, zongkaixiao from yuekaixiaodan where "
 				+ "riqi >= " + "'" + startDate + "'" 
 				+ " and " + "riqi <=" + "'" + endDate + "'";
-		if(this.chepaihao !=null && !this.chepaihao.equals("")){
+		if(chepaihao !=null && !chepaihao.equals("")){
 			sql = sql + " and " + "chepaihao like " + "'%" + chepaihao + "%'";
 		}
 		sql = sql + " order by riqi asc;";
@@ -473,7 +476,7 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 				+ "from niankaixiaodan where "
 				+ "riqi >= " + "'" + startDate + "'" 
 				+ " and " + "riqi <=" + "'" + endDate + "'";
-		if(this.chepaihao !=null && !this.chepaihao.equals("")){
+		if(chepaihao !=null && !chepaihao.equals("")){
 			sql = sql + " and " + "chepaihao like " + "'%" + chepaihao + "%'";
 		}
 		sql = sql + " order by riqi asc;";
@@ -546,7 +549,7 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 		String sql = "select chepaihao, riqi, weixiudian, weixiuxiangmu, weixiujine, beizhu from weixiudan where "
 				+ "riqi >= " + "'" + startDate + "'" 
 				+ " and " + "riqi <=" + "'" + endDate + "'";
-		if(this.chepaihao !=null && !this.chepaihao.equals("")){
+		if(chepaihao !=null && !chepaihao.equals("")){
 			sql = sql + " and " + "chepaihao like " + "'%" + chepaihao + "%'";
 		}
 		sql = sql + " order by riqi asc;";
