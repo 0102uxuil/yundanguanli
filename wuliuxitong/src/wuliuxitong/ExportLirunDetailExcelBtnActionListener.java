@@ -227,15 +227,15 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 						if(hdrow == null){
 							hdrow = sheet.createRow(sheet.getPhysicalNumberOfRows());
 						}
-						hdcell = row.createCell(5, Cell.CELL_TYPE_NUMERIC);//zhongliang
+						hdcell = hdrow.createCell(5, Cell.CELL_TYPE_NUMERIC);//zhongliang
 						hdcell.setCellValue(chuchehuodan_rs.getString("zhongliang"));
-						hdcell = row.createCell(6, Cell.CELL_TYPE_NUMERIC);//sijijiage
+						hdcell = hdrow.createCell(6, Cell.CELL_TYPE_NUMERIC);//sijijiage
 						hdcell.setCellValue(chuchehuodan_rs.getString("sijijiage"));
-						hdcell = row.createCell(7, Cell.CELL_TYPE_NUMERIC);//qitafeiyong
+						hdcell = hdrow.createCell(7, Cell.CELL_TYPE_NUMERIC);//qitafeiyong
 						hdcell.setCellValue(chuchehuodan_rs.getString("qitafeiyong"));
-						hdcell = row.createCell(8, Cell.CELL_TYPE_NUMERIC);//shouxufei
+						hdcell = hdrow.createCell(8, Cell.CELL_TYPE_NUMERIC);//shouxufei
 						hdcell.setCellValue(chuchehuodan_rs.getString("shouxufei"));
-						hdcell = row.createCell(9, Cell.CELL_TYPE_NUMERIC);//sijijiagejine
+						hdcell = hdrow.createCell(9, Cell.CELL_TYPE_NUMERIC);//sijijiagejine
 						hdcell.setCellValue(chuchehuodan_rs.getString("sijijiagejine"));
 						lirun += Float.parseFloat(chuchehuodan_rs.getString("sijijiagejine"));
 					}
@@ -274,15 +274,15 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 						if(hdrow == null){
 							hdrow = sheet.createRow(sheet.getPhysicalNumberOfRows());
 						}
-						hdcell = row.createCell(13, Cell.CELL_TYPE_NUMERIC);//zhongliang
+						hdcell = hdrow.createCell(13, Cell.CELL_TYPE_NUMERIC);//zhongliang
 						hdcell.setCellValue(huichehuodan_rs.getString("zhongliang"));
-						hdcell = row.createCell(14, Cell.CELL_TYPE_NUMERIC);//sijijiage
+						hdcell = hdrow.createCell(14, Cell.CELL_TYPE_NUMERIC);//sijijiage
 						hdcell.setCellValue(huichehuodan_rs.getString("sijijiage"));
-						hdcell = row.createCell(15, Cell.CELL_TYPE_NUMERIC);//qitafeiyong
+						hdcell = hdrow.createCell(15, Cell.CELL_TYPE_NUMERIC);//qitafeiyong
 						hdcell.setCellValue(huichehuodan_rs.getString("qitafeiyong"));
-						hdcell = row.createCell(16, Cell.CELL_TYPE_NUMERIC);//shouxufei
+						hdcell = hdrow.createCell(16, Cell.CELL_TYPE_NUMERIC);//shouxufei
 						hdcell.setCellValue(huichehuodan_rs.getString("shouxufei"));
-						hdcell = row.createCell(17, Cell.CELL_TYPE_NUMERIC);//sijijiagejine
+						hdcell = hdrow.createCell(17, Cell.CELL_TYPE_NUMERIC);//sijijiagejine
 						hdcell.setCellValue(huichehuodan_rs.getString("sijijiagejine"));
 						lirun += Float.parseFloat(huichehuodan_rs.getString("sijijiagejine"));
 					}
