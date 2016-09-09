@@ -293,27 +293,52 @@ public class ExportLirunDetailExcelBtnActionListener implements ActionListener {
 				
 				cell = row.createCell(colNum++);
 				cell.setCellValue(yundan_rs.getString("jiayouzhanjiayou"));
+				float tingchechangjiayou = 0, tingchechangyoujia = 0;
+				String yundanbianhao_next = YunDanBianHao.next(yundanbianhao);
+				if(yundanbianhao_next != null){
+					String sql_yn = "select tingchechangjiayou, tingchechangyoujia from kaixiaodan where "
+							+ "yundanbianhao = "
+							+ "'" + yundanbianhao_next + "'"
+							+ ";";
+					ResultSet rs_yn = DBManager.getInstance().excuteQuery(sql_yn);
+					if(rs_yn.next()){
+						if(rs_yn.getString("tingchechangjiayou") != null && !rs_yn.getString("tingchechangjiayou").equals("")){
+							tingchechangjiayou = rs_yn.getFloat("tingchechangjiayou");
+							tingchechangyoujia = rs_yn.getFloat("tingchechangyoujia");
+						}
+					}
+				}
 				cell = row.createCell(colNum++);
-				cell.setCellValue(yundan_rs.getString("tingchechangjiayou"));
+//				cell.setCellValue(yundan_rs.getString("tingchechangjiayou"));
+				cell.setCellValue(tingchechangjiayou);
 				cell = row.createCell(colNum++);
-				cell.setCellValue(yundan_rs.getString("tingchechangyoujia"));
+//				cell.setCellValue(yundan_rs.getString("tingchechangyoujia"));
+				cell.setCellValue(tingchechangyoujia);
 				cell = row.createCell(colNum++);//油合计
 				float youheji = 0;
 				if(yundan_rs.getString("jiayouzhanjiayou") != null && !yundan_rs.getString("jiayouzhanjiayou").trim().equals("")){
 					youheji += Float.parseFloat(yundan_rs.getString("jiayouzhanjiayou"));
 				}
-				if(yundan_rs.getString("tingchechangjiayou") != null && !yundan_rs.getString("tingchechangjiayou").trim().equals("")){
-					youheji += Float.parseFloat(yundan_rs.getString("tingchechangjiayou"))*Float.parseFloat(yundan_rs.getString("tingchechangyoujia"));
-				}
+//				if(yundan_rs.getString("tingchechangjiayou") != null && !yundan_rs.getString("tingchechangjiayou").trim().equals("")){
+//					youheji += Float.parseFloat(yundan_rs.getString("tingchechangjiayou"))*Float.parseFloat(yundan_rs.getString("tingchechangyoujia"));
+//				}
+				youheji += tingchechangjiayou*tingchechangyoujia;
 				cell.setCellValue(youheji);
 				cell = row.createCell(colNum++);
 				cell.setCellValue(yundan_rs.getString("gongzi"));
 				cell = row.createCell(colNum++);//其他开支
-				cell.setCellValue(Float.parseFloat(yundan_rs.getString("zongkaixiao")) - Float.parseFloat(yundan_rs.getString("gongzi")) - youheji);
+				float zongkaixiao = yundan_rs.getFloat("zongkaixiao");
+				if(yundan_rs.getString("tingchechangjiayou") != null && !yundan_rs.getString("tingchechangjiayou").equals("")){
+					zongkaixiao -= yundan_rs.getFloat("tingchechangyoujia")*yundan_rs.getFloat("tingchechangjiayou");
+				}
+				zongkaixiao += tingchechangjiayou*tingchechangyoujia;
+				cell.setCellValue(zongkaixiao - Float.parseFloat(yundan_rs.getString("gongzi")) - youheji);
 				cell = row.createCell(colNum++);
-				cell.setCellValue(yundan_rs.getString("zongkaixiao"));
+//				cell.setCellValue(yundan_rs.getString("zongkaixiao"));
+				cell.setCellValue(zongkaixiao);
 				cell = row.createCell(colNum++);//利润
-				lirun -= Float.parseFloat(yundan_rs.getString("zongkaixiao"));
+//				lirun -= Float.parseFloat(yundan_rs.getString("zongkaixiao"));
+				lirun -= zongkaixiao;
 				cell.setCellValue(lirun);
 				zongmaoli += lirun;
 			}
